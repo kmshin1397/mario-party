@@ -1,0 +1,23 @@
+<p-card *ngIf="character != null" class="card animated slow bounceIn">
+  <p-header>
+    <h2 class="name">Team {{ character.name }}</h2>
+  </p-header>
+  <div class="container">
+    <div class="pic">
+      <app-icon [character]="character"></app-icon>
+    </div>
+    <div class="row">
+      <img class="icon" src="../../assets/star.png" />
+      <h4>Stars Collected: {{ character.numStars }}</h4>
+    </div>
+    <div class="row">
+      <img class="icon" src="../../assets/coin.png" />
+      <h4>Coins Collected: {{ character.numCoins }}</h4>
+    </div>
+  </div>
+  <p-footer>
+    <p-button label="Board" routerLink="/board"></p-button>
+    <p-button label="Profile" routerLink="/profile"></p-button>
+    <p-button label="Logout" (onClick)="logout()"> </p-button>
+  </p-footer>
+</p-card>

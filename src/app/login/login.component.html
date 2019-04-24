@@ -1,4 +1,4 @@
-<div class="card">
+<!-- <div class="card">
   <div *ngIf="(afAuth.user | async) as user; else showLogin">
     <h1>Hello {{ user.displayName }}!</h1>
     <button (click)="logout()">Logout</button>
@@ -12,4 +12,41 @@
     <button (click)="createUser()">Create new user</button>
     <button (click)="login()">Login</button>
   </ng-template>
-</div>
+</div> -->
+<p-card class="card" *ngIf="authService.isLoggedIn">
+  <p-header> </p-header>
+  <div>
+    <h1>Hello {{ authService.getUser().displayName }}!</h1>
+  </div>
+  <p-footer>
+    <p-button label="Board" routerLink="/board"></p-button>
+    <p-button label="Profile" routerLink="/profile"></p-button>
+    <p-button label="Logout" (onClick)="logout()"> </p-button>
+  </p-footer>
+</p-card>
+<p-card class="card animated bounceIn" *ngIf="!authService.isLoggedIn">
+  <div>
+    <h1>Choose a character!</h1>
+  </div>
+  <ngx-slick-carousel
+    class="carousel"
+    #slickModal="slick-carousel"
+    [config]="slideConfig"
+    (init)="slickInit($event)"
+    (afterChange)="afterChange($event)"
+  >
+    <div ngxSlickItem *ngFor="let character of characters" class="slide">
+      <!-- <img
+        class="profile-pic"
+        src="./../../assets/{{ character.defaultPicture }}"
+        alt=""
+        width="100%"
+      /> -->
+      <app-icon [character]="character"></app-icon>
+      <h4>{{ character.name }}</h4>
+    </div>
+  </ngx-slick-carousel>
+  <p-footer>
+    <p-button label="Select" (onClick)="login()"></p-button>
+  </p-footer>
+</p-card>

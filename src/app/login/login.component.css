@@ -1,13 +1,49 @@
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 10vh;
+  left: 2.5%;
   z-index: 99;
-  background: white;
-  width: 400px;
+  width: 95%;
   height: auto;
-  padding: 25px;
   text-align: center;
+}
+
+:host >>> .slick-dots {
+  margin-bottom: 15px;
+}
+
+.slick-slider {
+  width: 85%;
+  margin: auto;
+  background: none;
+}
+
+:host >>> .nav-btn {
+  height: 47px;
+  position: absolute;
+  width: 26px;
+  cursor: pointer;
+  top: 100px !important;
+}
+
+:host >>> .prev-slide.slick-disabled,
+:host >>> .next-slide.slick-disabled {
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+:host >>> .prev-slide {
+  left: -33px;
+}
+
+:host >>> .next-slide {
+  right: -33px;
+}
+
+:host >>> .prev-slide:hover {
+  background-position: 0px -53px;
+}
+
+:host >>> .next-slide:hover {
+  background-position: -24px -53px;
 }

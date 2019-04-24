@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div
+  #logo
+  class="container animated rollIn"
+  style="text-align:center"
+  (click)="beginGame()"
+>
+  <h1 class="title">Mario Party '19</h1>
+  <img class="mario" alt="Mario Pic" src="../assets/Super-Mario-party.jpg" />
+  <div class="button">
+    <div class="button-text animated infinite flash slower">
+      Click to begin...
+    </div>
+  </div>
+</div>
+<div *ngIf="begun"><app-login></app-login></div>

@@ -1,4 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -11,19 +12,43 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
+// PrimeNG
+import { CardModule } from "primeng/card";
+import { ButtonModule } from "primeng/button";
+
+import { SlickCarouselModule } from "ngx-slick-carousel";
+
+import { AngularFontAwesomeModule } from "angular-font-awesome";
+
 import { environment } from "../environments/environment";
 import { LoginComponent } from "./login/login.component";
+import { BoardModule } from "../app/board/board.module";
+import { WelcomeComponent } from "./welcome/welcome.component";
+import { ProfileComponent } from "./profile/profile.component";
+import { SharedModule } from "../app/shared/shared.module";
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    WelcomeComponent,
+    ProfileComponent
+  ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    FormsModule
+    AngularFontAwesomeModule,
+    SharedModule,
+    BoardModule,
+    FormsModule,
+    CardModule,
+    ButtonModule,
+    SlickCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,3 +3,7 @@
   font-family: "Mario Party";
   src: url("assets/new-super-mario-font-mario-party-9.ttf");
 }
+
+body {
+  background: lightgoldenrodyellow;
+}
