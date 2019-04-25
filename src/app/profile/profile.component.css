@@ -2,6 +2,8 @@
   font-family: "Mario Party";
   padding-left: 25px;
   padding-top: 20px;
+  color: #007ad9;
+  text-shadow: 1px 1px 1px black;
 }
 
 .pic {
@@ -21,11 +23,26 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid rgb(151, 150, 150);
   padding: 10px;
 }
 
 .icon {
   width: 50px;
   height: 50px;
+}
+
+:host >>> .ui-card-body {
+  padding: 0;
+}
+
+:host >>> .ui-card-footer {
+  background-color: #007ad9;
+  margin-top: 1em;
+  height: 3em;
+}
+
+.card {
+  position: fixed;
+  top: 10vh;
 }
