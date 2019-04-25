@@ -22,10 +22,10 @@ import { AngularFontAwesomeModule } from "angular-font-awesome";
 
 import { environment } from "../environments/environment";
 import { LoginComponent } from "./login/login.component";
-import { BoardModule } from "../app/board/board.module";
 import { WelcomeComponent } from "./welcome/welcome.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { SharedModule } from "../app/shared/shared.module";
+import { GameModule } from "../app/game/game.module";
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { SharedModule } from "../app/shared/shared.module";
     AngularFireAuthModule,
     AngularFontAwesomeModule,
     SharedModule,
-    BoardModule,
+    GameModule,
     FormsModule,
     CardModule,
     ButtonModule,

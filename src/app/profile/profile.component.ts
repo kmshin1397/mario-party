@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit, OnChanges {
       {
         label: "Game",
         icon: "fas fa-dice",
-        routerLink: "/board"
+        routerLink: "/game"
       },
       {
         label: "Scoreboard",
