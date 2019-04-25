@@ -7,6 +7,7 @@ export class Character {
   numStars: number;
   numCoins: number;
   defaultPicture: string;
+  color: string;
 
   constructor(data: any) {
     this.id = data.id;
@@ -17,5 +18,6 @@ export class Character {
     this.numStars = data.numStars;
     this.numCoins = data.numCoins;
     this.defaultPicture = data.defaultPicture;
+    this.color = data.color;
   }
 }

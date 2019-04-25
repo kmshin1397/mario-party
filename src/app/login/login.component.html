@@ -1,19 +1,4 @@
-<!-- <div class="card">
-  <div *ngIf="(afAuth.user | async) as user; else showLogin">
-    <h1>Hello {{ user.displayName }}!</h1>
-    <button (click)="logout()">Logout</button>
-  </div>
-  <ng-template #showLogin>
-    <p>Please login.</p>
-    <label>Email: <input [(ngModel)]="email" placeholder="email" /> </label>
-    <label>
-      Password: <input [(ngModel)]="password" placeholder="password" />
-    </label>
-    <button (click)="createUser()">Create new user</button>
-    <button (click)="login()">Login</button>
-  </ng-template>
-</div> -->
-<p-card class="card" *ngIf="authService.isLoggedIn">
+<!-- <p-card class="card" *ngIf="authService.isLoggedIn">
   <p-header> </p-header>
   <div>
     <h1>Hello {{ authService.getUser().displayName }}!</h1>
@@ -23,7 +8,7 @@
     <p-button label="Profile" routerLink="/profile"></p-button>
     <p-button label="Logout" (onClick)="logout()"> </p-button>
   </p-footer>
-</p-card>
+</p-card> -->
 <p-card class="card animated bounceIn" *ngIf="!authService.isLoggedIn">
   <div>
     <h1>Choose a character!</h1>
@@ -47,6 +32,6 @@
     </div>
   </ngx-slick-carousel>
   <p-footer>
-    <p-button label="Select" (onClick)="login()"></p-button>
+    <p-button label="Start!" (onClick)="login()"></p-button>
   </p-footer>
 </p-card>

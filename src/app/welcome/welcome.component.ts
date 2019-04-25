@@ -1,7 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
-import { AngularFirestore } from "@angular/fire/firestore";
-import { Observable } from "rxjs";
-
+import { AuthService } from "../auth.service";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-welcome",
   templateUrl: "./welcome.component.html",
@@ -12,18 +11,19 @@ export class WelcomeComponent implements OnInit {
 
   bounce: any;
 
-  items: Observable<any[]>;
   begun: Boolean;
-  constructor(db: AngularFirestore) {
-    this.items = db.collection("items").valueChanges();
+  constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit() {
     this.begun = false;
   }
 
-  ngOnInit() {}
-
   beginGame() {
-    console.log("here");
     this.begun = true;
     this.logo.nativeElement.classList.toggle("disabled");
+
+    if (this.authService.isLoggedIn) {
+      this.router.navigateByUrl("/profile");
+    }
   }
 }

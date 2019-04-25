@@ -47,3 +47,23 @@
 :host >>> .next-slide:hover {
   background-position: -24px -53px;
 }
+
+:host >>> .ui-button {
+  background-color: black;
+  border: 1px solid black;
+  box-shadow: 1px 1px 2px #444444;
+  margin-top: 15px;
+  letter-spacing: 0.1em !important;
+}
+
+:host >>> .ui-button:enabled:active,
+:host >>> .ui-button:enabled:hover {
+  background-color: darkgoldenrod;
+  border: 1px solid darkgoldenrod;
+}
+
+/* 
+:host >>> .ui-card-content h1 {
+  color: darkgoldenrod !important;
+  text-shadow: 2px 2px 3px #444444 !important;
+} */

@@ -1,11 +1,9 @@
-:host >>> .ui-menubar .ui-menuitem-link {
-  font-weight: bold;
-}
-
 :host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-text,
 :host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-icon {
-  color: white;
-  text-shadow: 1px 1px 2px black;
+  color: darkgoldenrod;
+  text-shadow: 0px 1px 1px black;
+  font-size: 14px;
+  letter-spacing: 0.11em;
 }
 
 :host >>> .ui-menubar {
@@ -16,5 +14,12 @@
   position: fixed;
   top: 0;
   left: 0;
-  border-bottom: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
+}
+
+@media (max-width: 350px) {
+  :host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-text,
+  :host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-icon {
+    font-size: 12px;
+  }
 }

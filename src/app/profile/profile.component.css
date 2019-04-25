@@ -2,8 +2,11 @@
   font-family: "Mario Party";
   padding-left: 25px;
   padding-top: 20px;
-  color: #007ad9;
-  text-shadow: 1px 1px 1px black;
+  padding-bottom: 15px;
+  /* background-color: #007ad9; */
+  color: white;
+  text-shadow: 1px 2px 2px #444444;
+  border-bottom: 1px 1px 2px #cccccc;
 }
 
 .pic {
@@ -36,7 +39,7 @@
   padding: 0;
 }
 
-:host >>> .ui-card-footer {
+.footer {
   background-color: #007ad9;
   margin-top: 1em;
   height: 3em;

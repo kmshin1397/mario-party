@@ -2,7 +2,9 @@
 <div *ngIf="character != null" class="animated flipInY fast">
   <p-card class="card">
     <p-header>
-      <h2 class="name">Team {{ character.name }}</h2>
+      <h2 class="name" [style.background-color]="character.color">
+        Team {{ character.name }}
+      </h2>
     </p-header>
     <div class="container">
       <div class="pic">
@@ -17,9 +19,6 @@
         <h4>Coins Collected: {{ character.numCoins }}</h4>
       </div>
     </div>
-    <p-footer>
-      <!-- <p-button label="Board" routerLink="/board"></p-button> -->
-      <!-- <p-button class="logout" label="Logout" (onClick)="logout()"> </p-button> -->
-    </p-footer>
+    <div class="footer" [style.background-color]="character.color"></div>
   </p-card>
 </div>

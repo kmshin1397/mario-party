@@ -13,4 +13,4 @@
     </div>
   </div>
 </div>
-<div *ngIf="begun"><app-login></app-login></div>
+<div *ngIf="!this.authService.isLoggedIn && begun"><app-login></app-login></div>
