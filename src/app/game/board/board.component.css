@@ -1,14 +1,23 @@
 ngx-cytoscape {
   position: fixed;
-  top: 50%;
+  top: 55%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  height: 550px;
-  border: solid lightslategray;
-  width: 350px;
-  padding: 15px;
+  transform: translate(-50%, -55%);
+  height: 400px;
+  border: 3px solid #333333;
+  width: 300px;
+  border-radius: 20px;
 }
 
 :host >>> ngx-cytoscape > canvas {
-  opacity: 0.2;
+  opacity: 0.3;
+}
+
+.save {
+  position: absolute;
+  bottom: 8vh;
+  width: 50px;
+  height: 50px;
+  background-color: aquamarine;
+  z-index: 999;
 }

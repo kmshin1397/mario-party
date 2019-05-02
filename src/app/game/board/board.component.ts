@@ -18,6 +18,10 @@ export class BoardComponent implements OnInit, AfterViewInit {
   @ViewChild(CytoscapeComponent)
   private cytoscapeComponent: CytoscapeComponent;
 
+  onClickMe() {
+    console.log(JSON.stringify(this.cytoscapeComponent.cy.json()));
+  }
+
   constructor() {}
 
   ngOnInit() {
@@ -85,8 +89,8 @@ export class BoardComponent implements OnInit, AfterViewInit {
           },
           width: "60px",
           height: "60px",
-          "border-width": "3px",
-          "border-color": "#ffffff",
+          "border-width": "5px",
+          "border-color": "#ffd700",
           "border-style": "solid"
         }
       },
@@ -95,15 +99,15 @@ export class BoardComponent implements OnInit, AfterViewInit {
         selector: "edge",
         style: {
           width: 10,
-          "line-color": "#999999",
+          "line-color": "#333333",
           "target-arrow-shape": function(ele) {
-            if (ele.data("target") == 10) {
+            if (ele.data("target") == 26) {
               return "chevron";
             } else {
               return "none";
             }
           },
-          "target-arrow-color": "#999999",
+          "target-arrow-color": "#333333",
           "arrow-scale": 2,
           "curve-style": "straight"
         }
@@ -120,12 +124,9 @@ export class BoardComponent implements OnInit, AfterViewInit {
       const ctx: CanvasRenderingContext2D = cnv.getContext("2d");
 
       // ...
-      this.cytoscapeComponent.cy.on("render cyCanvas.resize", function(
-        evt,
-        src
-      ) {
+      this.cytoscapeComponent.cy.on("render resize", function(evt, src) {
         const background = new Image();
-        background.src = "./../../../assets/map2.png";
+        background.src = "./../../../assets/map3.png";
 
         // "this" is now "cy" inside this callback function
         cyLayer.resetTransform(ctx);
@@ -169,12 +170,5 @@ export class BoardComponent implements OnInit, AfterViewInit {
         });
       });
     }
-    // this.render();
-  }
-
-  render() {
-    // this.cytoscapeComponent.cy.layout(LayoutOptions);
-    this.cytoscapeComponent.cy.autoungrabify(true);
-    // this.cytoscapeComponent.cy.fit();
   }
 }

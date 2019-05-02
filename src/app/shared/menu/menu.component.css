@@ -1,9 +1,14 @@
 :host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-text,
 :host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-icon {
-  color: darkgoldenrod;
-  text-shadow: 0px 1px 1px black;
+  color: #333333;
+  text-shadow: 1px 1px 2px darkgoldenrod;
   font-size: 14px;
   letter-spacing: 0.11em;
+}
+
+:host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-text:hover,
+:host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-icon:hover {
+  cursor: pointer;
 }
 
 :host >>> .ui-menubar {
