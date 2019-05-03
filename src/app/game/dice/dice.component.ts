@@ -3,7 +3,8 @@ import {
   OnInit,
   ViewChild,
   ElementRef,
-  AfterViewInit
+  Output,
+  EventEmitter
 } from "@angular/core";
 
 @Component({
@@ -14,6 +15,10 @@ import {
 export class DiceComponent implements OnInit {
   @ViewChild("dice1") elDice: ElementRef;
 
+  @Output() closed = new EventEmitter<boolean>();
+
+  I = 0;
+
   constructor() {}
 
   ngOnInit() {}
@@ -21,7 +26,10 @@ export class DiceComponent implements OnInit {
   // Roll Function
   roll() {
     // Initial dice variables
-    var diceOne = Math.floor(Math.random() * 6 + 1);
+    // var diceOne = Math.floor(Math.random() * 6 + 1);
+    var nums = [1, 2, 3, 4, 5, 6];
+    var diceOne = nums[this.I];
+    this.I = (this.I + 1) % 6;
     this.elDice.nativeElement.classList.toggle("animate");
 
     //Dice reset and display
@@ -31,5 +39,9 @@ export class DiceComponent implements OnInit {
         this.elDice.nativeElement.classList.add("show-" + i);
       }
     }
-  } // END Come out roll function
+  }
+
+  close() {
+    this.closed.emit(true);
+  }
 }

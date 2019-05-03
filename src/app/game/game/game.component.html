@@ -9,6 +9,9 @@
     type="button"
     label="Roll a die!"
     class="ui-button-rounded"
+    (click)="openDice()"
   ></button>
 </div>
-<app-dice></app-dice>
+<div *ngIf="dice" class="animated zoomIn faster">
+  <app-dice (closed)="closeDice()"></app-dice>
+</div>

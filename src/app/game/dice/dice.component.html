@@ -1,9 +1,11 @@
 <p-card class="overlay">
+  <div class="close-button">
+    <button (click)="close()">X</button>
+  </div>
   <div class="dice-board">
     <div class="container-dice">
       <div #dice1 id="dice1" class="dice dice-one">
         <div id="dice-one-side-one" class="side one">
-          <!-- <div class="divot one-1"></div> -->
           <div class="dice-side">
             <h1 class="number">1</h1>
           </div>
@@ -37,6 +39,15 @@
     </div>
     <!-- END container-dice -->
   </div>
-  <button (click)="roll()">Roll</button>
+  <div class="footer">
+    <button
+      pButton
+      type="button"
+      label="Roll!"
+      class="ui-button-rounded"
+      (click)="roll()"
+    ></button>
+  </div>
   <!-- END dice-board -->
 </p-card>
+<div class="background"></div>

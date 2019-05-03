@@ -9,6 +9,8 @@ import { MenuItem } from "primeng/api";
 export class GameComponent implements OnInit {
   items: MenuItem[];
 
+  dice: boolean = false;
+
   constructor() {}
 
   ngOnInit() {
@@ -29,5 +31,13 @@ export class GameComponent implements OnInit {
         icon: "fas fa-sign-out-alt"
       }
     ];
+  }
+
+  openDice() {
+    this.dice = true;
+  }
+
+  closeDice() {
+    this.dice = false;
   }
 }
