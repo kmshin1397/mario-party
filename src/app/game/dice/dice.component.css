@@ -1,0 +1,129 @@
+.dice-board {
+  width: 100%;
+  height: 75%;
+}
+
+:host >>> .overlay .ui-card {
+  z-index: 10 !important;
+  position: relative !important;
+  top: 15vh;
+  height: 400px;
+}
+
+/*########## DICE THINGS ###########*/
+.container-dice {
+  display: inline-block;
+  width: 300px;
+  margin: 50px auto 0 auto;
+}
+
+.dice {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.divot {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border-radius: 20px;
+  background: #000;
+}
+
+.dice-one {
+  margin-left: 18vw;
+  margin-top: 5vh;
+}
+
+.side:nth-child(1) {
+  transform: rotateX(180deg) rotateY(0deg) translateZ(100px);
+}
+
+.side:nth-child(6) {
+  transform: rotateY(0deg) translateZ(100px);
+}
+
+.side:nth-child(3) {
+  transform: rotateY(90deg) translateZ(100px);
+}
+
+.side:nth-child(4) {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+
+.side:nth-child(5) {
+  transform: rotateX(90deg) translateZ(100px);
+}
+
+.side:nth-child(2) {
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+.show-1 {
+  transform: rotateX(720deg) rotateZ(-720deg);
+}
+
+.show-6 {
+  transform: rotateX(-900deg) rotateZ(1080deg);
+}
+
+.show-3 {
+  transform: rotateY(-450deg) rotateZ(-1440deg);
+}
+
+.show-4 {
+  transform: rotateY(810deg) rotateZ(720deg);
+}
+
+.show-5 {
+  transform: rotateX(-810deg) rotateZ(-1080deg);
+}
+
+.show-2 {
+  transform: rotateX(450deg) rotateZ(-720deg);
+}
+
+.side {
+  background: radial-gradient(ellipse at center, #0e0e0e 70%, #7d7e7d 100%);
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+.side {
+  font-family: "Mario Party";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dice-side {
+  width: 80%;
+  height: 80%;
+  background-color: rgba(255, 255, 255, 0.99);
+  border: 5px solid rgb(83, 83, 83);
+  border-radius: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.number {
+  font-size: 6em;
+  color: goldenrod;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
+}
+
+/* CLEARFIX */
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
