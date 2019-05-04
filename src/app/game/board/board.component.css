@@ -18,6 +18,5 @@ ngx-cytoscape {
   bottom: 8vh;
   width: 50px;
   height: 50px;
-  background-color: aquamarine;
   z-index: 999;
 }

@@ -13,5 +13,8 @@
   ></button>
 </div>
 <div *ngIf="dice" class="animated zoomIn faster">
-  <app-dice (closed)="closeDice()"></app-dice>
+  <app-dice
+    (diceRoll)="moveCharacter($event)"
+    (closed)="closeDice()"
+  ></app-dice>
 </div>

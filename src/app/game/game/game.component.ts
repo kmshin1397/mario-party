@@ -1,5 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { MenuItem } from "primeng/api";
+import { delay } from "q";
+import { BoardComponent } from "../board/board.component";
 
 @Component({
   selector: "app-game",
@@ -10,6 +12,10 @@ export class GameComponent implements OnInit {
   items: MenuItem[];
 
   dice: boolean = false;
+
+  diceRoll: number;
+
+  @ViewChild(BoardComponent) board: BoardComponent;
 
   constructor() {}
 
@@ -39,5 +45,33 @@ export class GameComponent implements OnInit {
 
   closeDice() {
     this.dice = false;
+  }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async moveCharacter(numSpaces: number) {
+    // 1 and 6 are switched for some reason, so adjust accordingly
+    switch (numSpaces) {
+      case 1: {
+        this.diceRoll = 6;
+        break;
+      }
+      case 6: {
+        this.diceRoll = 1;
+        break;
+      }
+      default: {
+        this.diceRoll = numSpaces;
+        break;
+      }
+    }
+
+    this.board.moveCharacter(this.diceRoll);
+
+    await delay(1800);
+
+    this.closeDice();
   }
 }

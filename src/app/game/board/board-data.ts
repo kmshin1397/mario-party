@@ -351,3 +351,32 @@ export const LayoutOptions = {
     return position;
   } // transform a given node position. Useful for changing flow direction in discrete layouts
 };
+
+export const BoardPositions = [
+  { id: 1, x: 500, y: 400 },
+  { id: 2, x: 500, y: 500 },
+  { id: 3, x: 500, y: 625 },
+  { id: 4, x: 500, y: 750 },
+  { id: 5, x: 400, y: 750 },
+  { id: 6, x: 400, y: 600 },
+  { id: 7, x: 400, y: 475 },
+  { id: 8, x: 400, y: 375 },
+  { id: 9, x: 400, y: 260 },
+  { id: 10, x: 360, y: 175 },
+  { id: 11, x: 290, y: 360 },
+  { id: 12, x: 190, y: 230 },
+  { id: 13, x: 190, y: 425 },
+  { id: 14, x: 190, y: 560 },
+  { id: 15, x: 190, y: 750 },
+  { id: 16, x: 90, y: 750 },
+  { id: 17, x: 90, y: 600 },
+  { id: 18, x: 90, y: 475 },
+  { id: 19, x: 90, y: 320 },
+  { id: 20, x: 90, y: 50 },
+  { id: 21, x: 225, y: 160 },
+  { id: 22, x: 300, y: 115 },
+  { id: 23, x: 330, y: 30 },
+  { id: 24, x: 450, y: 30 },
+  { id: 25, x: 500, y: 130 },
+  { id: 26, x: 500, y: 260 }
+];

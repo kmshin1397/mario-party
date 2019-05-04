@@ -1,6 +1,13 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+  Input
+} from "@angular/core";
 import { CytoscapeComponent } from "ngx-cytoscape";
-import { BoardData, LayoutOptions } from "./board-data";
+import { BoardData, LayoutOptions, BoardPositions } from "./board-data";
+import { delay } from "q";
 
 @Component({
   selector: "app-board",
@@ -10,6 +17,7 @@ import { BoardData, LayoutOptions } from "./board-data";
 export class BoardComponent implements OnInit, AfterViewInit {
   graphData: any;
   layoutOptions: any;
+  boardPositions: any;
 
   style: any;
 
@@ -28,6 +36,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
     this.currNode = 1;
     this.graphData = BoardData;
     this.layoutOptions = LayoutOptions;
+    this.boardPositions = BoardPositions;
 
     this.style = [
       // the stylesheet for the graph
@@ -251,46 +260,33 @@ export class BoardComponent implements OnInit, AfterViewInit {
     }
   }
 
-  moveCharacter() {
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async moveCharacter(numSpaces: number) {
+    await delay(2300);
     if (this.cytoscapeComponent.cy) {
-      const cyLayer = this.cytoscapeComponent.cy.cyCanvas();
-      const cnv: HTMLCanvasElement = cyLayer.getCanvas();
-      const ctx: CanvasRenderingContext2D = cnv.getContext("2d");
+      var node = this.cytoscapeComponent.cy.getElementById("999");
+      for (var i = 1; i <= numSpaces; i++) {
+        // Node numbers grow downward (oops)
+        this.currNode = this.currNode - 1;
 
-      // Top layer
-      this.cytoscapeComponent.cy.on("render resize", function(evt, src) {
-        // "this" is now "cy" inside this callback function
-        cyLayer.resetTransform(ctx);
-        cyLayer.clear(ctx);
-        cyLayer.setTransform(ctx);
+        // Wrap around if necessary
+        if (this.currNode <= 0) this.currNode += 26;
 
-        const width = cnv.width;
-        const height = cnv.height;
-        const data = Array(width * height);
-
-        const zoom = this.zoom();
-
-        // Actually clear
-        ctx.save();
-        ctx.setTransform(1, 0, 0, 1, 0, 0);
-        ctx.clearRect(0, 0, width, height);
-
-        ctx.restore();
-
-        // Draw model elements
-        this.nodes().forEach(function(node) {
-          const id = node.id();
-          const pos = node.position();
-          // Do something with canvas at or around the node's position
-          // Draw shadows under nodes
-          if (id == 1) {
-            const character = new Image();
-            character.src = "./../../../assets/shyguy.png";
-            ctx.drawImage(character, pos.x - 40, pos.y - 40, 80, 80);
-          }
+        var nextPos = this.boardPositions[this.currNode - 1];
+        var animation = node.animation({
+          position: {
+            x: nextPos.x,
+            y: nextPos.y
+          },
+          duration: 600,
+          easing: "cubic-bezier(0.68, -0.55, 0.265, 1.55)"
         });
-      });
-      console.log(this.cytoscapeComponent.cy);
+
+        await animation.play().promise();
+      }
     }
   }
 }

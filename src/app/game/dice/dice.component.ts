@@ -17,6 +17,8 @@ export class DiceComponent implements OnInit {
 
   @Output() closed = new EventEmitter<boolean>();
 
+  @Output() diceRoll = new EventEmitter<Number>();
+
   I = 0;
 
   constructor() {}
@@ -27,7 +29,7 @@ export class DiceComponent implements OnInit {
   roll() {
     // Initial dice variables
     // var diceOne = Math.floor(Math.random() * 6 + 1);
-    var nums = [1, 2, 3, 4, 5, 6];
+    var nums = [3, 1, 2, 3, 4, 5, 6];
     var diceOne = nums[this.I];
     this.I = (this.I + 1) % 6;
     this.elDice.nativeElement.classList.toggle("animate");
@@ -39,6 +41,8 @@ export class DiceComponent implements OnInit {
         this.elDice.nativeElement.classList.add("show-" + i);
       }
     }
+
+    this.diceRoll.emit(diceOne);
   }
 
   close() {
