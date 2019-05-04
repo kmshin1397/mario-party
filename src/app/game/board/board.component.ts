@@ -8,6 +8,7 @@ import {
 import { CytoscapeComponent } from "ngx-cytoscape";
 import { BoardData, LayoutOptions, BoardPositions } from "./board-data";
 import { delay } from "q";
+import { UserService } from "src/app/user.service";
 
 @Component({
   selector: "app-board",
@@ -15,6 +16,9 @@ import { delay } from "q";
   styleUrls: ["./board.component.css"]
 })
 export class BoardComponent implements OnInit, AfterViewInit {
+  @Input()
+  user: any;
+
   graphData: any;
   layoutOptions: any;
   boardPositions: any;
@@ -23,6 +27,10 @@ export class BoardComponent implements OnInit, AfterViewInit {
 
   currNode: number;
 
+  iconSrc: string;
+
+  boardDataReady: boolean = false;
+
   @ViewChild(CytoscapeComponent)
   private cytoscapeComponent: CytoscapeComponent;
 
@@ -30,13 +38,20 @@ export class BoardComponent implements OnInit, AfterViewInit {
     console.log(JSON.stringify(this.cytoscapeComponent.cy.json()));
   }
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
-  ngOnInit() {
-    this.currNode = 1;
+  async ngOnInit() {
+    this.currNode = this.user.currentLocIndex;
     this.graphData = BoardData;
     this.layoutOptions = LayoutOptions;
     this.boardPositions = BoardPositions;
+
+    // Add in character node
+    this.graphData.nodes[this.graphData.nodes.length - 1].data.icon =
+      "./../../../assets/" + this.user.defaultPicture;
+    this.graphData.nodes[
+      this.graphData.nodes.length - 1
+    ].position = this.boardPositions[this.currNode - 1];
 
     this.style = [
       // the stylesheet for the graph
@@ -70,15 +85,18 @@ export class BoardComponent implements OnInit, AfterViewInit {
           },
           "background-gradient-stop-positions": "20% 90%",
           "background-image": function(ele) {
-            var nodeImage = new Map<string, string>([
-              ["blue", "none"],
-              ["red", "none"],
-              ["exclamation", "./../../../assets/exclamation.png"],
-              ["mushroom", "./../../../assets/mushroom.png"],
-              ["star", "./../../../assets/star.png"],
-              ["character", "./../../../assets/shyguy.png"]
-            ]);
-            return nodeImage.get(ele.data("type"));
+            if (ele.data("type") == "character") {
+              return ele.data("icon");
+            } else {
+              var nodeImage = new Map<string, string>([
+                ["blue", "none"],
+                ["red", "none"],
+                ["exclamation", "./../../../assets/exclamation.png"],
+                ["mushroom", "./../../../assets/mushroom.png"],
+                ["star", "./../../../assets/star.png"]
+              ]);
+              return nodeImage.get(ele.data("type"));
+            }
           },
           "background-width": function(ele) {
             var nodeImage = new Map<string, string>([
@@ -162,6 +180,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
         }
       }
     ];
+    this.boardDataReady = true;
   }
 
   ngAfterViewInit() {
@@ -213,16 +232,19 @@ export class BoardComponent implements OnInit, AfterViewInit {
         ctx.restore();
       });
     }
-
-    // this.drawCharacter();
   }
 
-  drawCharacter() {
+  async drawCharacter() {
     if (this.cytoscapeComponent.cy) {
       const cyLayer = this.cytoscapeComponent.cy.cyCanvas();
       const cnv: HTMLCanvasElement = cyLayer.getCanvas();
       const ctx: CanvasRenderingContext2D = cnv.getContext("2d");
 
+      var user = await this.userService.getCharacterDetails();
+
+      console.log(user);
+
+      const iconSrc = "./../../../assets/" + user.defaultPicture;
       // Top layer
       this.cytoscapeComponent.cy.on("render resize", function(evt, src) {
         // "this" is now "cy" inside this callback function
@@ -251,12 +273,11 @@ export class BoardComponent implements OnInit, AfterViewInit {
           // Draw shadows under nodes
           if (id == 1) {
             const character = new Image();
-            character.src = "./../../../assets/shyguy.png";
+            character.src = iconSrc;
             ctx.drawImage(character, pos.x - 40, pos.y - 40, 80, 80);
           }
         });
       });
-      console.log(this.cytoscapeComponent.cy.elements());
     }
   }
 
@@ -286,6 +307,8 @@ export class BoardComponent implements OnInit, AfterViewInit {
         });
 
         await animation.play().promise();
+
+        this.userService.updateLocIndex(this.currNode);
       }
     }
   }

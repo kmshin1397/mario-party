@@ -1,4 +1,4 @@
-<div class="cytograph">
+<div class="cytograph" *ngIf="boardDataReady">
   <ngx-cytoscape
     [elements]="graphData"
     [style]="style"

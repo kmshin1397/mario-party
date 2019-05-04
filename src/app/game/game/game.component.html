@@ -2,7 +2,7 @@
 <div class="header">
   <h2>Mario Party '19</h2>
 </div>
-<app-board></app-board>
+<app-board *ngIf="user" [user]="user"></app-board>
 <div class="footer">
   <button
     pButton

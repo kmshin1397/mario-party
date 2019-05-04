@@ -10,10 +10,16 @@ export class UserService {
   userName: string;
   character: Character;
 
-  constructor(
-    private authService: AuthService,
-    private afs: AngularFirestore
-  ) {}
+  docIdMap: Map<string, number>;
+
+  constructor(private authService: AuthService, private afs: AngularFirestore) {
+    this.docIdMap = new Map<string, number>();
+    this.docIdMap.set("Kamek", 1);
+    this.docIdMap.set("Whomp", 2);
+    this.docIdMap.set("Piranha Plant", 3);
+    this.docIdMap.set("Shy Guy", 4);
+    this.docIdMap.set("Bob-omb", 5);
+  }
 
   async getCharacterDetails() {
     if (this.authService.isLoggedIn) {
@@ -41,6 +47,17 @@ export class UserService {
         });
 
       return this.character;
+    }
+  }
+
+  updateLocIndex(newIndex: number) {
+    if (this.authService.isLoggedIn) {
+      this.afs
+        .collection("characters")
+        .doc(this.docIdMap.get(this.userName).toString())
+        .update({
+          currentLocIndex: newIndex
+        });
     }
   }
 }

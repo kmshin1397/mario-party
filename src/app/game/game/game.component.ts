@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { MenuItem } from "primeng/api";
 import { delay } from "q";
 import { BoardComponent } from "../board/board.component";
+import { UserService } from "src/app/user.service";
 
 @Component({
   selector: "app-game",
@@ -15,11 +16,13 @@ export class GameComponent implements OnInit {
 
   diceRoll: number;
 
+  user: any;
+
   @ViewChild(BoardComponent) board: BoardComponent;
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     // Set up menu
     this.items = [
       {
@@ -37,6 +40,8 @@ export class GameComponent implements OnInit {
         icon: "fas fa-sign-out-alt"
       }
     ];
+
+    this.user = await this.userService.getCharacterDetails();
   }
 
   openDice() {
