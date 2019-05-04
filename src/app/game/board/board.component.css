@@ -9,7 +9,7 @@ ngx-cytoscape {
   border-radius: 20px;
 }
 
-:host >>> ngx-cytoscape > canvas {
+:host >>> ngx-cytoscape > canvas:nth-child(3) {
   opacity: 0.3;
 }
 

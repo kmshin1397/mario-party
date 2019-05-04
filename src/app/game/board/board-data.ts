@@ -285,6 +285,17 @@ export const BoardData = {
       locked: false,
       grabbable: false,
       classes: ""
+    },
+    {
+      data: { id: "999", type: "character" },
+      position: { x: 500, y: 390 },
+      group: "nodes",
+      removed: false,
+      selected: false,
+      selectable: true,
+      locked: false,
+      grabbable: false,
+      classes: ""
     }
   ],
   edges: [
