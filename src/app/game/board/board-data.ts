@@ -1,7 +1,7 @@
 export const BoardData = {
   nodes: [
     {
-      data: { id: "8", type: "mushroom" },
+      data: { id: "8", type: "blue" },
       position: { x: 400, y: 375 },
       group: "nodes",
       removed: false,
@@ -12,7 +12,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "9", type: "blue" },
+      data: { id: "9", type: "red" },
       position: { x: 400, y: 260 },
       group: "nodes",
       removed: false,
@@ -23,7 +23,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "10", type: "red" },
+      data: { id: "10", type: "blue" },
       position: { x: 360, y: 175 },
       group: "nodes",
       removed: false,
@@ -56,7 +56,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "13", type: "mushroom" },
+      data: { id: "13", type: "blue" },
       position: { x: 190, y: 425 },
       group: "nodes",
       removed: false,
@@ -67,7 +67,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "14", type: "blue" },
+      data: { id: "14", type: "mushroom" },
       position: { x: 190, y: 560 },
       group: "nodes",
       removed: false,
@@ -78,7 +78,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "15", type: "exclamation" },
+      data: { id: "15", type: "badluck" },
       position: { x: 190, y: 750 },
       group: "nodes",
       removed: false,
@@ -100,8 +100,8 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "17", type: "blue" },
-      position: { x: 90, y: 600 },
+      data: { id: "17", type: "red" },
+      position: { x: 90, y: 550 },
       group: "nodes",
       removed: false,
       selected: false,
@@ -111,18 +111,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "18", type: "red" },
-      position: { x: 90, y: 475 },
-      group: "nodes",
-      removed: false,
-      selected: false,
-      selectable: true,
-      locked: false,
-      grabbable: false,
-      classes: ""
-    },
-    {
-      data: { id: "19", type: "blue" },
+      data: { id: "18", type: "blue" },
       position: { x: 90, y: 320 },
       group: "nodes",
       removed: false,
@@ -133,7 +122,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "20", type: "blue" },
+      data: { id: "19", type: "exclamation" },
       position: { x: 90, y: 50 },
       group: "nodes",
       removed: false,
@@ -144,7 +133,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "21", type: "mushroom" },
+      data: { id: "20", type: "badluck" },
       position: { x: 225, y: 160 },
       group: "nodes",
       removed: false,
@@ -155,7 +144,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "22", type: "blue" },
+      data: { id: "21", type: "blue" },
       position: { x: 300, y: 115 },
       group: "nodes",
       removed: false,
@@ -166,7 +155,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "23", type: "blue" },
+      data: { id: "22", type: "blue" },
       position: { x: 330, y: 30 },
       group: "nodes",
       removed: false,
@@ -177,7 +166,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "24", type: "blue" },
+      data: { id: "23", type: "exclamation" },
       position: { x: 450, y: 30 },
       group: "nodes",
       removed: false,
@@ -188,7 +177,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "25", type: "red" },
+      data: { id: "24", type: "red" },
       position: { x: 500, y: 130 },
       group: "nodes",
       removed: false,
@@ -199,7 +188,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "26", type: "exclamation" },
+      data: { id: "25", type: "exclamation" },
       position: { x: 500, y: 260 },
       group: "nodes",
       removed: false,
@@ -221,7 +210,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "2", type: "blue" },
+      data: { id: "2", type: "badluck" },
       position: { x: 500, y: 500 },
       group: "nodes",
       removed: false,
@@ -254,7 +243,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "5", type: "red" },
+      data: { id: "5", type: "mushroom" },
       position: { x: 400, y: 750 },
       group: "nodes",
       removed: false,
@@ -265,7 +254,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "6", type: "blue" },
+      data: { id: "6", type: "exclamation" },
       position: { x: 400, y: 600 },
       group: "nodes",
       removed: false,
@@ -299,32 +288,33 @@ export const BoardData = {
     }
   ],
   edges: [
-    { data: { source: 1, target: 26 } },
-    { data: { source: 2, target: 1 } },
-    { data: { source: 3, target: 2 } },
-    { data: { source: 4, target: 3 } },
-    { data: { source: 5, target: 4 } },
-    { data: { source: 6, target: 5 } },
-    { data: { source: 7, target: 6 } },
-    { data: { source: 8, target: 7 } },
-    { data: { source: 9, target: 8 } },
-    { data: { source: 10, target: 9 } },
-    { data: { source: 11, target: 10 } },
-    { data: { source: 12, target: 11 } },
-    { data: { source: 13, target: 12 } },
-    { data: { source: 14, target: 13 } },
-    { data: { source: 15, target: 14 } },
-    { data: { source: 16, target: 15 } },
-    { data: { source: 17, target: 16 } },
-    { data: { source: 18, target: 17 } },
-    { data: { source: 19, target: 18 } },
-    { data: { source: 20, target: 19 } },
-    { data: { source: 21, target: 20 } },
-    { data: { source: 22, target: 21 } },
-    { data: { source: 23, target: 22 } },
-    { data: { source: 24, target: 23 } },
-    { data: { source: 25, target: 24 } },
-    { data: { source: 26, target: 25 } }
+    { data: { id: "e1", source: 1, target: 25 } },
+    { data: { id: "e2", source: 2, target: 1 } },
+    { data: { id: "e3", source: 3, target: 2 } },
+    { data: { id: "e4", source: 4, target: 3 } },
+    { data: { id: "e5", source: 5, target: 4 } },
+    { data: { id: "e6", source: 6, target: 5 } },
+    { data: { id: "e7", source: 7, target: 6 } },
+    { data: { id: "e8", source: 8, target: 7 } },
+    { data: { id: "e9", source: 9, target: 8 } },
+    { data: { id: "e10", source: 10, target: 9 } },
+    { data: { id: "e11", source: 11, target: 10 } },
+    { data: { id: "e12", source: 12, target: 11 } },
+    { data: { id: "e13", source: 13, target: 12 } },
+    { data: { id: "e14", source: 14, target: 13 } },
+    { data: { id: "e15", source: 15, target: 14 } },
+    { data: { id: "e16", source: 16, target: 15 } },
+    { data: { id: "e17", source: 17, target: 16 } },
+    { data: { id: "e18", source: 18, target: 17 } },
+    { data: { id: "e19", source: 19, target: 18 } },
+    { data: { id: "e20", source: 20, target: 19 } },
+    { data: { id: "e21", source: 21, target: 20 } },
+    { data: { id: "e22", source: 22, target: 21 } },
+    { data: { id: "e23", source: 23, target: 22 } },
+    { data: { id: "e24", source: 24, target: 23 } },
+    { data: { id: "e25", source: 25, target: 24 } },
+    { data: { id: "e26", source: 19, target: 12 } },
+    { data: { id: "e27", source: 23, target: 10 } }
   ]
 };
 
@@ -369,14 +359,13 @@ export const BoardPositions = [
   { id: 14, x: 190, y: 560 },
   { id: 15, x: 190, y: 750 },
   { id: 16, x: 90, y: 750 },
-  { id: 17, x: 90, y: 600 },
-  { id: 18, x: 90, y: 475 },
-  { id: 19, x: 90, y: 320 },
-  { id: 20, x: 90, y: 50 },
-  { id: 21, x: 225, y: 160 },
-  { id: 22, x: 300, y: 115 },
-  { id: 23, x: 330, y: 30 },
-  { id: 24, x: 450, y: 30 },
-  { id: 25, x: 500, y: 130 },
-  { id: 26, x: 500, y: 260 }
+  { id: 17, x: 90, y: 550 },
+  { id: 18, x: 90, y: 320 },
+  { id: 19, x: 90, y: 50 },
+  { id: 20, x: 225, y: 160 },
+  { id: 21, x: 300, y: 115 },
+  { id: 22, x: 330, y: 30 },
+  { id: 23, x: 450, y: 30 },
+  { id: 24, x: 500, y: 130 },
+  { id: 25, x: 500, y: 260 }
 ];

@@ -64,6 +64,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
             var nodeColor = new Map<string, string>([
               ["blue", "#1a75ff"],
               ["red", "#ff1a1a"],
+              ["badluck", "#b51515"],
               ["exclamation", "#53c653"],
               ["mushroom", "#53c653"],
               ["star", "#e6e6ff"],
@@ -76,6 +77,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
             var nodeColor = new Map<string, string>([
               ["blue", "#1a75ff white"],
               ["red", "#ff1a1a white"],
+              ["badluck", "#b51515 white"],
               ["exclamation", "#53c653 white"],
               ["mushroom", "#53c653 white"],
               ["star", "#e6e6ff white"],
@@ -91,6 +93,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
               var nodeImage = new Map<string, string>([
                 ["blue", "none"],
                 ["red", "none"],
+                ["badluck", "./../../../assets/badluck.png"],
                 ["exclamation", "./../../../assets/exclamation.png"],
                 ["mushroom", "./../../../assets/mushroom.png"],
                 ["star", "./../../../assets/star.png"]
@@ -102,6 +105,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
             var nodeImage = new Map<string, string>([
               ["blue", "100%"],
               ["red", "100%"],
+              ["badluck", "100%"],
               ["exclamation", "100%"],
               ["mushroom", "60%"],
               ["star", "70%"],
@@ -113,6 +117,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
             var nodeImage = new Map<string, string>([
               ["blue", "100%"],
               ["red", "100%"],
+              ["badluck", "100%"],
               ["exclamation", "100%"],
               ["mushroom", "60%"],
               ["star", "70%"],
@@ -124,6 +129,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
             var nodeColor = new Map<string, string>([
               ["blue", "1"],
               ["red", "1"],
+              ["badluck", "1"],
               ["exclamation", "1"],
               ["mushroom", "1"],
               ["star", "1"],
@@ -137,6 +143,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
             var nodeImage = new Map<string, string>([
               ["blue", "ellipse"],
               ["red", "ellipse"],
+              ["badluck", "ellipse"],
               ["exclamation", "ellipse"],
               ["mushroom", "ellipse"],
               ["star", "ellipse"],
@@ -150,6 +157,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
             var nodeImage = new Map<string, string>([
               ["blue", "3px"],
               ["red", "3px"],
+              ["badluck", "3px"],
               ["exclamation", "3px"],
               ["mushroom", "3px"],
               ["star", "3px"],
@@ -168,14 +176,18 @@ export class BoardComponent implements OnInit, AfterViewInit {
           width: 10,
           "line-color": "#333333",
           "target-arrow-shape": function(ele) {
-            if (ele.data("target") == 26) {
+            var arrows = ["12", "11", "18", "25", "9", "22"];
+            if (
+              ele.data("id") == "e27" ||
+              arrows.includes(ele.data("target"))
+            ) {
               return "chevron";
             } else {
               return "none";
             }
           },
           "target-arrow-color": "#333333",
-          "arrow-scale": 2,
+          "arrow-scale": 1,
           "curve-style": "straight"
         }
       }
@@ -294,7 +306,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
         this.currNode = this.currNode - 1;
 
         // Wrap around if necessary
-        if (this.currNode <= 0) this.currNode += 26;
+        if (this.currNode <= 0) this.currNode += 25;
 
         var nextPos = this.boardPositions[this.currNode - 1];
         var animation = node.animation({
