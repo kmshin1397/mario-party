@@ -28,6 +28,7 @@
     "cytoscape-canvas": "^3.0.1",
     "firebase": "^5.9.4",
     "font-awesome": "^4.7.0",
+    "hamburgers": "^1.1.3",
     "hammerjs": "^2.0.8",
     "jquery": "^3.4.0",
     "ngx-cytoscape": "^0.5.24",

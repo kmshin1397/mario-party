@@ -1,0 +1,65 @@
+<app-menu [items]="items"></app-menu>
+
+<div class="animated flipInY fast">
+  <p-card class="card">
+    <p-header>
+      <h2 class="name">
+        Welcome to Mario Party '19
+      </h2>
+    </p-header>
+    <div class="container">
+      <h4>Here are the rules of the game:</h4>
+      <p-accordion class="accordion" [multiple]="true">
+        <p-accordionTab header="Overview">
+          You and your stack are now immersed in a game of Mario Party. You must
+          traverse the game board (encompassing all of campus), participating in
+          mini-games and missions at every turn. You cannot advance to your next
+          turn until you successfully complete the current mini-game/mission.
+          Stars and coins will be awarded based on your performance in these.
+          Coins can be used to buy items/perks in future games. Whoever has the
+          most stars at the end wins!
+        </p-accordionTab>
+        <p-accordionTab header="Stars">
+          <div class="row">
+            <img class="icon" src="../../assets/star.png" />
+            <p>
+              The team with the most stars at the end wins! Stars are awarded at
+              the end of each mini-game / puzzle mission. For games involving
+              competition between multiple teams, more stars will be awarded to
+              the winners. There may also be some bonus stars at the end for
+              hidden missions <i class="far fa-smile-wink"></i>
+            </p>
+          </div>
+        </p-accordionTab>
+        <p-accordionTab header="Coins">
+          <div class="row">
+            <img class="icon" src="../../assets/coin.png" />
+            <p>
+              Coins are also rewarded at the end of mini-games and puzzles, the
+              amount varying based on your performance in the event. Any coins
+              you earn can be used in future activities to purchase perks. These
+              perks may include items to help you out in a mini-game, hints for
+              certain puzzles, etc.
+            </p>
+          </div>
+        </p-accordionTab>
+        <p-accordionTab header="The App">
+          <div class="row">
+            <p>
+              This app is the backbone of the party. Here, you'll find:<br /><br />
+              <b>The Profile</b> This is your teams profile page. You can track
+              how many stars and coins your team has here.<br />
+              <b>The Scoreboard</b> Checkout how you're doing relative to the
+              rest of the stack! All teams' stars and coins will be listed here.
+              <b>The Game</b> Go here to progress in the game. Upon unlocking
+              the next turn, you'll be able to roll the dice and move along the
+              board. A clue to the next event location will then be revealed to
+              you.
+            </p>
+          </div>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+    <div class="footer"></div>
+  </p-card>
+</div>

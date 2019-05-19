@@ -1,1 +1,23 @@
-<p-menubar [model]="items"></p-menubar>
+<div class="bar">
+  <button
+    #menuButton
+    class="hamburger hamburger--elastic"
+    type="button"
+    (click)="toggleMenu()"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button>
+</div>
+<div *ngIf="menuOpen" id="mySidenav" class="sidenav animated slideInLeft fast">
+  <button class="closebtn" type="button" (click)="toggleMenu()">&times;</button>
+  <div
+    class="link"
+    *ngFor="let item of items; let last = last"
+    routerLink="{{ item.routerLink }}"
+    [ngClass]="{ last: last }"
+  >
+    <a> <i class="{{ item.icon }}"></i> {{ item.label }}</a>
+  </div>
+</div>

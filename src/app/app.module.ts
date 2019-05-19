@@ -15,6 +15,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 // PrimeNG
 import { CardModule } from "primeng/card";
 import { ButtonModule } from "primeng/button";
+import { AccordionModule } from "primeng/accordion";
 
 import { SlickCarouselModule } from "ngx-slick-carousel";
 
@@ -26,13 +27,15 @@ import { WelcomeComponent } from "./welcome/welcome.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { SharedModule } from "../app/shared/shared.module";
 import { GameModule } from "../app/game/game.module";
+import { RulesComponent } from "./rules/rules.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     WelcomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    RulesComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { GameModule } from "../app/game/game.module";
     FormsModule,
     CardModule,
     ButtonModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    AccordionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

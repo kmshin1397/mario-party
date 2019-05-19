@@ -2,7 +2,7 @@
 :host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-icon {
   color: #333333;
   text-shadow: 1px 1px 2px darkgoldenrod;
-  font-size: 14px;
+  font-size: 11px;
   letter-spacing: 0.11em;
 }
 
@@ -12,7 +12,7 @@
 }
 
 :host >>> .ui-menubar {
-  padding: 0.25em;
+  padding: 0.15em;
   background-color: inherit;
   border: none;
   width: 100vw;
@@ -25,6 +25,92 @@
 @media (max-width: 350px) {
   :host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-text,
   :host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-icon {
-    font-size: 12px;
+    font-size: 11px;
   }
+
+  :host >>> .ui-menubar .ui-menuitem-link {
+    padding: 0.5em !important;
+  }
+}
+
+.bar {
+  padding: 0.15em;
+  background-color: inherit;
+  border: none;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0, 0.88);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  text-decoration: none;
+  font-size: 22px;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  font-size: 36px;
+  margin-left: 50px;
+  background-color: transparent;
+  color: darkgoldenrod;
+  text-shadow: 2px 2px 4px black;
+  border: none;
+}
+
+.link a {
+  color: darkgoldenrod;
+  text-shadow: 2px 2px 4px black;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  /* border-bottom: 1px solid darkgoldenrod; */
+}
+
+.link i {
+  color: darkgoldenrod;
+  text-shadow: 2px 2px 4px black;
+  margin-right: 5px;
+}
+
+.link {
+  width: fit-content;
+  text-align: center;
+  /* margin: auto; */
+  margin-left: 20px;
+  margin-bottom: 25px;
+}
+
+.last {
+  border-top: 1px solid darkgoldenrod;
+  margin-top: 30px;
+  padding-top: 10px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.hamburger .hamburger-inner,
+.hamburger .hamburger-inner::before,
+.hamburger .hamburger-inner::after {
+  box-shadow: 1px 1px 2px darkgoldenrod;
 }

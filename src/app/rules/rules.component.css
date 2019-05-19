@@ -1,0 +1,63 @@
+.name {
+  font-family: "Mario Party";
+  padding-left: 25px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  /* background-color: #007ad9; */
+  color: black;
+  text-shadow: 1px 2px 2px goldenrod;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 0px 20px 20px 20px;
+}
+
+:host >>> .ui-card-body {
+  padding: 0;
+}
+
+.card {
+  position: fixed;
+  top: 10vh;
+}
+
+:host
+  >>> .accordion
+  .ui-accordion
+  .ui-accordion-header:not(.ui-state-disabled).ui-state-active
+  a {
+  background-color: goldenrod !important;
+  color: black !important;
+}
+
+:host
+  >>> .accordion
+  .ui-accordion
+  .ui-accordion-header:not(.ui-state-disabled).ui-state-active
+  a
+  .ui-accordion-toggle-icon {
+  color: black !important;
+}
+
+:host >>> .accordion .ui-accordion .ui-accordion-header a {
+  background-color: lemonchiffon !important;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}

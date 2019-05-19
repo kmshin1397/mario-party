@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
 import { MenuItem } from "primeng/api";
 import { AuthService } from "src/app/auth.service";
 
@@ -11,9 +11,15 @@ export class MenuComponent implements OnInit {
   @Input()
   items: MenuItem[];
 
+  @ViewChild("menuButton")
+  private menuButton: ElementRef;
+
+  menuOpen: boolean;
+
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
+    this.menuOpen = false;
     // If a logout button is included in the menu, attach the logout function to it
     if (this.items.findIndex(val => val.label == "Logout")) {
       this.items.pop();
@@ -29,5 +35,10 @@ export class MenuComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  toggleMenu() {
+    this.menuButton.nativeElement.classList.toggle("hidden");
+    this.menuOpen = !this.menuOpen;
   }
 }

@@ -40,7 +40,11 @@ export class ProfileComponent implements OnInit, OnChanges {
         label: "Scoreboard",
         icon: "fas fa-list-ol"
       },
-      { separator: true },
+      {
+        label: "Rules",
+        icon: "fas fa-gavel",
+        routerLink: "/rules"
+      },
       {
         label: "Logout",
         icon: "fas fa-sign-out-alt"

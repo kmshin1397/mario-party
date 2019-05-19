@@ -7,8 +7,9 @@ import { SharedModule } from "../shared/shared.module";
 import { ButtonModule } from "primeng/button";
 import { DiceComponent } from "./dice/dice.component";
 import { CardModule } from "primeng/card";
+import { EventComponent } from './event/event.component';
 @NgModule({
-  declarations: [BoardComponent, GameComponent, DiceComponent],
+  declarations: [BoardComponent, GameComponent, DiceComponent, EventComponent],
   imports: [
     CommonModule,
     CytoscapeModule,

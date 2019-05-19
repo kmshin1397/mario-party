@@ -1,0 +1,59 @@
+:host >>> .overlay .ui-card {
+  z-index: 10 !important;
+  position: relative !important;
+  top: 15vh;
+  height: 450px;
+  background: radial-gradient(ellipse at center, #fefcea 0%, #e7dd8e 100%);
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.85;
+  background-color: whitesmoke;
+}
+
+:host >>> .ui-button {
+  background-color: #333333;
+  border: 1px solid #333333;
+  box-shadow: 1px 1px 2px #444444;
+  margin-top: 15px;
+  letter-spacing: 0.1em !important;
+  color: goldenrod;
+  text-shadow: 1px 2px 3px black;
+  font-weight: bold;
+}
+
+:host >>> .ui-button:enabled:active,
+:host >>> .ui-button:enabled:hover {
+  background-color: darkgoldenrod;
+  border: 1px solid darkgoldenrod;
+}
+
+.footer {
+  position: relative;
+  top: 10vh;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.close-button {
+  float: right;
+}
+
+.close-button button {
+  background: none;
+  border: none;
+  font-weight: bolder;
+  font-size: 1.5em;
+}
+
+.close-button:enabled:active,
+.close-button:enabled:hover {
+  cursor: pointer;
+}

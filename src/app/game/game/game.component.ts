@@ -34,7 +34,11 @@ export class GameComponent implements OnInit {
         label: "Scoreboard",
         icon: "fas fa-list-ol"
       },
-      { separator: true },
+      {
+        label: "Rules",
+        icon: "fas fa-gavel",
+        routerLink: "/rules"
+      },
       {
         label: "Logout",
         icon: "fas fa-sign-out-alt"
