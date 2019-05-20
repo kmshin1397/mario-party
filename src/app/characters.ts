@@ -11,7 +11,9 @@ export const Characters: Character[] = [
     numCoins: 0,
     defaultPicture: "kamek.png",
     color: "blue",
-    canMove: false
+    canMove: false,
+    turnIndex: 0,
+    diceRolls: []
   },
   {
     id: 2,
@@ -23,7 +25,9 @@ export const Characters: Character[] = [
     numCoins: 0,
     defaultPicture: "dry_bones.png",
     color: "gray",
-    canMove: false
+    canMove: false,
+    turnIndex: 0,
+    diceRolls: []
   },
   {
     id: 3,
@@ -35,7 +39,9 @@ export const Characters: Character[] = [
     numCoins: 0,
     defaultPicture: "piranha_plant.png",
     color: "green",
-    canMove: false
+    canMove: false,
+    turnIndex: 0,
+    diceRolls: []
   },
   {
     id: 4,
@@ -47,7 +53,9 @@ export const Characters: Character[] = [
     numCoins: 0,
     defaultPicture: "shyguy.png",
     color: "red",
-    canMove: false
+    canMove: false,
+    turnIndex: 0,
+    diceRolls: []
   },
   {
     id: 5,
@@ -59,6 +67,8 @@ export const Characters: Character[] = [
     numCoins: 0,
     defaultPicture: "bob-omb.png",
     color: "black",
-    canMove: false
+    canMove: false,
+    turnIndex: 0,
+    diceRolls: []
   }
 ];

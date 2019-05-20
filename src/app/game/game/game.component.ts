@@ -40,7 +40,7 @@ export class GameComponent implements OnInit {
       {
         label: "Scoreboard",
         icon: "fas fa-list-ol",
-        routerLink: "scoreboard"
+        routerLink: "/scoreboard"
       },
       {
         label: "QR Reader",

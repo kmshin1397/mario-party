@@ -9,6 +9,8 @@ export class Character {
   defaultPicture: string;
   color: string;
   canMove: boolean;
+  turnIndex: number;
+  diceRolls: number[];
 
   constructor(data: any) {
     this.id = data.id;
@@ -21,5 +23,7 @@ export class Character {
     this.defaultPicture = data.defaultPicture;
     this.color = data.color;
     this.canMove = data.canMove;
+    this.turnIndex = data.turnIndex;
+    this.diceRolls = data.diceRolls;
   }
 }

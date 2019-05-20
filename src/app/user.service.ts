@@ -52,6 +52,9 @@ export class UserService {
 
   updateLocIndex(newIndex: number) {
     if (this.authService.isLoggedIn) {
+      if (this.userName == undefined) {
+        this.userName = this.authService.getUser().displayName;
+      }
       this.afs
         .collection("characters")
         .doc(this.docIdMap.get(this.userName).toString())
@@ -72,6 +75,21 @@ export class UserService {
         .doc(this.docIdMap.get(this.userName).toString())
         .update({
           canMove: newBool
+        });
+    }
+  }
+
+  updateTurnIndex(newTurnIndex: number) {
+    console.log("Updating can move");
+    if (this.authService.isLoggedIn) {
+      if (this.userName == undefined) {
+        this.userName = this.authService.getUser().displayName;
+      }
+      this.afs
+        .collection("characters")
+        .doc(this.docIdMap.get(this.userName).toString())
+        .update({
+          turnIndex: newTurnIndex
         });
     }
   }

@@ -6,6 +6,8 @@ import {
   Output,
   EventEmitter
 } from "@angular/core";
+import { UserService } from "src/app/user.service";
+import { Character } from "src/app/character";
 
 @Component({
   selector: "app-dice",
@@ -19,19 +21,32 @@ export class DiceComponent implements OnInit {
 
   @Output() diceRoll = new EventEmitter<Number>();
 
+  user: Character;
+
+  nextRoll: number;
+
   I = 0;
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.user = await this.userService.getCharacterDetails();
+
+    // Turn index is set to next turn i
+    var currTurnIndex = this.user.turnIndex;
+
+    this.nextRoll = this.user.diceRolls[currTurnIndex];
+  }
 
   // Roll Function
-  roll() {
+  async roll() {
     // Initial dice variables
     // var diceOne = Math.floor(Math.random() * 6 + 1);
-    var nums = [3, 1, 2, 3, 4, 5, 6];
-    var diceOne = nums[this.I];
-    this.I = (this.I + 1) % 6;
+    // var nums = [3, 1, 2, 3, 4, 5, 6];
+    // var diceOne = nums[this.I];
+    // this.I = (this.I + 1) % 6;
+
+    var diceOne = this.filterRoll(this.nextRoll);
     this.elDice.nativeElement.classList.toggle("animate");
 
     //Dice reset and display
@@ -43,9 +58,32 @@ export class DiceComponent implements OnInit {
     }
 
     this.diceRoll.emit(diceOne);
+
+    if (this.user == undefined) {
+      this.user = await this.userService.getCharacterDetails();
+    }
+
+    var currTurnIndex = this.user.turnIndex;
+    var i = (currTurnIndex + 1) % this.user.diceRolls.length;
+    this.userService.updateTurnIndex(currTurnIndex + 1);
+    this.nextRoll = this.user.diceRolls[i];
   }
 
   close() {
     this.closed.emit(true);
+  }
+
+  filterRoll(roll: number) {
+    switch (roll) {
+      case 1: {
+        return 6;
+      }
+      case 6: {
+        return 1;
+      }
+      default: {
+        return roll;
+      }
+    }
   }
 }
