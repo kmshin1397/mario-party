@@ -27,6 +27,7 @@ export class ScoreboardComponent implements OnInit {
         icon: "fas fa-gavel",
         routerLink: "/rules"
       },
+      { label: "Shop", icon: "fas fa-shopping-cart", routerLink: "/shop" },
       {
         label: "Profile",
         icon: "fas fa-user-alt",

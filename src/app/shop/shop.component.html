@@ -1,0 +1,123 @@
+<app-menu [items]="items"></app-menu>
+
+<div class="animated flipInY fast">
+  <p-card class="card">
+    <p-header>
+      <h2 class="name">
+        Shop
+      </h2>
+    </p-header>
+    <div *ngIf="!ready">
+      <div class="center"><p-progressSpinner></p-progressSpinner></div>
+    </div>
+    <div *ngIf="ready" class="container">
+      <p-table
+        [value]="shopData"
+        selectionMode="single"
+        [(selection)]="selectedItem"
+        (onRowSelect)="selectHandler()"
+      >
+        <ng-template pTemplate="header" let-col>
+          <tr>
+            <th colspan="2">
+              <h3>Item</h3>
+            </th>
+            <th>
+              <h3>Price</h3>
+            </th>
+            <th>
+              <h3>In Stock</h3>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-char>
+          <tr [pSelectableRow]="char">
+            <td class="item" colspan="2">
+              <div class="cell">
+                <img class="icon" src="{{ char.iconSrc }}" />
+                <h4>{{ char.name }}</h4>
+              </div>
+            </td>
+            <td class="other">
+              <div class="cell">
+                <h4>{{ char.price }}</h4>
+                <img class="icon" src="../../assets/coin.png" />
+              </div>
+            </td>
+            <td class="other">
+              <div class="cell">
+                <h4>{{ char.cap }}</h4>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div *ngIf="ready" class="footer">
+      <div class="balance">
+        Current number of coins: {{ this.userData.numCoins }}
+      </div>
+    </div>
+  </p-card>
+</div>
+<p-dialog
+  class="dia"
+  *ngIf="this.selectedItem"
+  header="{{ this.selectedItem.name }}"
+  [(visible)]="displayDialogue"
+  [style]="{ width: '90%!important' }"
+  (onHide)="closeDialogue()"
+  [modal]="true"
+  [responsive]="true"
+  [style]="{ width: '350px', minWidth: '200px' }"
+  [minY]="70"
+  [baseZIndex]="10000"
+>
+  <div *ngIf="!loadingPur" class="dialogue">
+    {{ this.selectedItem.description }}<br /><br />
+    You'll have
+    <b>{{ this.userData.numCoins - this.selectedItem.price }}</b> coins left
+    after this purchase.
+  </div>
+  <div *ngIf="loadingPur" class="dialogue">
+    <div class="center"><p-progressSpinner></p-progressSpinner></div>
+  </div>
+  <p-footer>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-check"
+      (click)="buyItem()"
+      label="Buy"
+    ></button>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-close"
+      (click)="closeDialogue()"
+      label="Cancel"
+      class="ui-button-secondary"
+    ></button>
+  </p-footer>
+</p-dialog>
+<div class="filler"></div>
+
+<div *ngIf="showPurchase" class="animated zoomIn fast">
+  <p-card class="msg-card">
+    <p-header>
+      <h2 class="name">
+        Congrats!
+      </h2>
+      <button class="float-right" (click)="closePurchase()">X</button>
+    </p-header>
+    <div class="msg-container">
+      <h4>You've bought a: {{ this.selectedItem.name }}!</h4>
+      <img
+        class="purchase-icon animated infinite flash slow"
+        src="{{ this.selectedItem.iconSrc }}"
+      />
+    </div>
+    <div class="footer"></div>
+  </p-card>
+</div>
+<p-toast position="top-right"></p-toast>

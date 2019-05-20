@@ -13,7 +13,10 @@ export const Characters: Character[] = [
     color: "blue",
     canMove: false,
     turnIndex: 0,
-    diceRolls: []
+    diceRolls: [],
+    coinsAcquired: [],
+    coinsSpent: 0,
+    starsAcquired: []
   },
   {
     id: 2,
@@ -27,7 +30,10 @@ export const Characters: Character[] = [
     color: "gray",
     canMove: false,
     turnIndex: 0,
-    diceRolls: []
+    diceRolls: [],
+    coinsAcquired: [],
+    coinsSpent: 0,
+    starsAcquired: []
   },
   {
     id: 3,
@@ -41,7 +47,10 @@ export const Characters: Character[] = [
     color: "green",
     canMove: false,
     turnIndex: 0,
-    diceRolls: []
+    diceRolls: [],
+    coinsAcquired: [],
+    coinsSpent: 0,
+    starsAcquired: []
   },
   {
     id: 4,
@@ -55,7 +64,10 @@ export const Characters: Character[] = [
     color: "red",
     canMove: false,
     turnIndex: 0,
-    diceRolls: []
+    diceRolls: [],
+    coinsAcquired: [],
+    coinsSpent: 0,
+    starsAcquired: []
   },
   {
     id: 5,
@@ -69,6 +81,9 @@ export const Characters: Character[] = [
     color: "black",
     canMove: false,
     turnIndex: 0,
-    diceRolls: []
+    diceRolls: [],
+    coinsAcquired: [],
+    coinsSpent: 0,
+    starsAcquired: []
   }
 ];

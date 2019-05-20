@@ -6,6 +6,7 @@ import { GameComponent } from "./game/game/game.component";
 import { RulesComponent } from "./rules/rules.component";
 import { QrComponent } from "./qr/qr.component";
 import { ScoreboardComponent } from "./scoreboard/scoreboard.component";
+import { ShopComponent } from "./shop/shop.component";
 
 const routes: Routes = [
   { path: "", component: WelcomeComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: "profile", component: ProfileComponent },
   { path: "rules", component: RulesComponent },
   { path: "qr", component: QrComponent },
-  { path: "scoreboard", component: ScoreboardComponent }
+  { path: "scoreboard", component: ScoreboardComponent },
+  { path: "shop", component: ShopComponent }
 ];
 
 @NgModule({

@@ -2,7 +2,7 @@
 <div class="header">
   <h2>QR Reader</h2>
 </div>
-<div class="container">
+<div class="scan-container">
   <zxing-scanner
     class="scanner"
     #scanner
@@ -12,7 +12,7 @@
   <h4>Point the camera at the QR code!</h4>
 </div>
 
-<div *ngIf="showStar" class="animated flipInY fast">
+<div *ngIf="showStar" class="animated zoomIn fast">
   <p-card class="card">
     <p-header>
       <h2 class="name">
@@ -34,7 +34,7 @@
   </p-card>
 </div>
 
-<div *ngIf="showCoin" class="animated flipInY fast">
+<div *ngIf="showCoin" class="animated zoomIn fast">
   <p-card class="card">
     <p-header>
       <h2 class="name">
@@ -53,7 +53,7 @@
   </p-card>
 </div>
 
-<div *ngIf="showPuzzle" class="animated flipInY fast">
+<div *ngIf="showPuzzle" class="animated zoomIn fast">
   <p-card class="card">
     <p-header>
       <h2 class="name">

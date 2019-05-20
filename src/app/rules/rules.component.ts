@@ -18,6 +18,7 @@ export class RulesComponent implements OnInit {
         icon: "fas fa-dice",
         routerLink: "/game"
       },
+      { label: "Shop", icon: "fas fa-shopping-cart", routerLink: "/shop" },
       {
         label: "Profile",
         icon: "fas fa-user-alt",

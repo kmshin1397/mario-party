@@ -17,6 +17,9 @@ import { CardModule } from "primeng/card";
 import { ButtonModule } from "primeng/button";
 import { TabViewModule } from "primeng/tabview";
 import { TableModule } from "primeng/table";
+import { DialogModule } from "primeng/dialog";
+import { ProgressSpinnerModule } from "primeng/progressspinner";
+import { ToastModule } from "primeng/toast";
 
 import { SlickCarouselModule } from "ngx-slick-carousel";
 
@@ -33,6 +36,8 @@ import { GameModule } from "../app/game/game.module";
 import { RulesComponent } from "./rules/rules.component";
 import { QrComponent } from "./qr/qr.component";
 import { ScoreboardComponent } from "./scoreboard/scoreboard.component";
+import { ShopComponent } from "./shop/shop.component";
+import { MessageService } from "primeng/api";
 
 @NgModule({
   declarations: [
@@ -42,7 +47,8 @@ import { ScoreboardComponent } from "./scoreboard/scoreboard.component";
     ProfileComponent,
     RulesComponent,
     QrComponent,
-    ScoreboardComponent
+    ScoreboardComponent,
+    ShopComponent
   ],
   imports: [
     BrowserModule,
@@ -61,9 +67,12 @@ import { ScoreboardComponent } from "./scoreboard/scoreboard.component";
     SlickCarouselModule,
     TabViewModule,
     TableModule,
-    ZXingScannerModule
+    DialogModule,
+    ZXingScannerModule,
+    ProgressSpinnerModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

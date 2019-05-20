@@ -28,14 +28,15 @@ export class GameComponent implements OnInit {
     // Set up menu
     this.items = [
       {
-        label: "Profile",
-        icon: "fas fa-user-alt",
-        routerLink: "/profile"
-      },
-      {
         label: "Rules",
         icon: "fas fa-gavel",
         routerLink: "/rules"
+      },
+      { label: "Shop", icon: "fas fa-shopping-cart", routerLink: "/shop" },
+      {
+        label: "Profile",
+        icon: "fas fa-user-alt",
+        routerLink: "/profile"
       },
       {
         label: "Scoreboard",

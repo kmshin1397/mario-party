@@ -11,6 +11,9 @@ export class Character {
   canMove: boolean;
   turnIndex: number;
   diceRolls: number[];
+  coinsSpent: number;
+  coinsAcquired: number[];
+  starsAcquired: number[];
 
   constructor(data: any) {
     this.id = data.id;
@@ -25,5 +28,12 @@ export class Character {
     this.canMove = data.canMove;
     this.turnIndex = data.turnIndex;
     this.diceRolls = data.diceRolls;
+    this.coinsSpent = data.coinsSpent;
+
+    console.log("Coins acquired:", data.coinsAcquired);
+
+    this.coinsAcquired = data.coinsAcquired;
+
+    this.starsAcquired = data.starsAcquired;
   }
 }

@@ -20,11 +20,14 @@ export class QrComponent implements OnInit {
   showPuzzle: boolean;
   puzzleMsg: string;
 
+  scannerInUse: boolean;
+
   constructor(private userService: UserService) {}
 
   ngOnInit() {
     this.showStar = false;
     this.showCoin = false;
+    this.scannerInUse = false;
     this.items = [
       {
         label: "Game",
@@ -36,6 +39,7 @@ export class QrComponent implements OnInit {
         icon: "fas fa-gavel",
         routerLink: "/rules"
       },
+      { label: "Shop", icon: "fas fa-shopping-cart", routerLink: "/shop" },
       {
         label: "Profile",
         icon: "fas fa-user-alt",
@@ -53,19 +57,51 @@ export class QrComponent implements OnInit {
     ];
   }
 
-  processQR(code: string) {
+  async processQR(code: string) {
     console.log(code);
-    var starRE = new RegExp("^STAR");
-    var coinRE = new RegExp("^COIN");
-    if (starRE.test(code)) {
-      this.userService.updateCanMove(true);
-      this.showStar = true;
-    } else if (coinRE.test(code)) {
-      this.numCoins = parseInt(code.split(" ")[1]);
-      this.showCoin = true;
-    } else {
-      this.puzzleMsg = code;
-      this.showPuzzle = true;
+    if (!this.scannerInUse) {
+      var starRE = new RegExp("^STAR");
+      var coinRE = new RegExp("^COIN");
+      if (starRE.test(code)) {
+        var starId = parseInt(code.split(" ")[1]);
+
+        this.scannerInUse = true;
+        var promise1 = this.userService.updateCanMove(true);
+        var promise2 = this.userService.addStar(starId);
+
+        // 3 second buffer window to ignore scans
+        var sleep = new Promise(resolve => {
+          setTimeout(() => {
+            resolve();
+          }, 10000);
+        });
+
+        Promise.all([promise1, promise2, sleep]).then(x => {
+          this.scannerInUse = false;
+        });
+
+        this.showStar = true;
+      } else if (coinRE.test(code)) {
+        this.numCoins = parseInt(code.split(" ")[1]);
+        var coinId = parseInt(code.split(" ")[2]);
+
+        this.scannerInUse = true;
+        var promise = this.userService.addCoins(this.numCoins, coinId);
+        var sleep = new Promise(resolve => {
+          setTimeout(() => {
+            resolve();
+          }, 10000);
+        });
+
+        Promise.all([promise, sleep]).then(x => {
+          this.scannerInUse = false;
+        });
+
+        this.showCoin = true;
+      } else {
+        this.puzzleMsg = code;
+        this.showPuzzle = true;
+      }
     }
   }
 

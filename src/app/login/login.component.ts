@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 
 import { AuthService } from "./../auth.service";
 
-import { Characters } from "./../characters";
+import { Characters } from "../characters";
 import { LoginInfo } from "./login-info";
 
 @Component({

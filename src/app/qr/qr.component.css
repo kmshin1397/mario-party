@@ -1,17 +1,18 @@
-.container {
-  margin: auto;
-  position: fixed;
+.scan-container {
+  position: absolute;
   top: 20vh;
   left: 50%;
   transform: translate(-50%, 0);
-  height: 400px;
-  width: 300px;
+  margin-top: 15px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  flex-flow: column nowrap;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 10px 10px 10px;
 }
 
-.container h4 {
+.scan-container h4 {
   font-family: "Open Sans", "Helvetica Neue", sans-serif;
 }
 
@@ -23,7 +24,7 @@
 }
 
 .header {
-  position: fixed;
+  position: absolute;
   top: 6.5vh;
   left: 0;
   width: 100%;

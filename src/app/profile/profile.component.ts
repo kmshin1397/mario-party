@@ -41,6 +41,7 @@ export class ProfileComponent implements OnInit, OnChanges {
         icon: "fas fa-gavel",
         routerLink: "/rules"
       },
+      { label: "Shop", icon: "fas fa-shopping-cart", routerLink: "/shop" },
       {
         label: "Scoreboard",
         icon: "fas fa-list-ol",

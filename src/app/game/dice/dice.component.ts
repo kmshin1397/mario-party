@@ -65,7 +65,7 @@ export class DiceComponent implements OnInit {
 
     var currTurnIndex = this.user.turnIndex;
     var i = (currTurnIndex + 1) % this.user.diceRolls.length;
-    this.userService.updateTurnIndex(currTurnIndex + 1);
+    this.userService.updateTurnIndex(i);
     this.nextRoll = this.user.diceRolls[i];
   }
 
