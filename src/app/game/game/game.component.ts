@@ -18,6 +18,8 @@ export class GameComponent implements OnInit {
 
   user: any;
 
+  canMove: boolean;
+
   @ViewChild(BoardComponent) board: BoardComponent;
 
   constructor(private userService: UserService) {}
@@ -31,13 +33,19 @@ export class GameComponent implements OnInit {
         routerLink: "/profile"
       },
       {
-        label: "Scoreboard",
-        icon: "fas fa-list-ol"
-      },
-      {
         label: "Rules",
         icon: "fas fa-gavel",
         routerLink: "/rules"
+      },
+      {
+        label: "Scoreboard",
+        icon: "fas fa-list-ol",
+        routerLink: "scoreboard"
+      },
+      {
+        label: "QR Reader",
+        icon: "fas fa-qrcode",
+        routerLink: "/qr"
       },
       {
         label: "Logout",
@@ -46,6 +54,9 @@ export class GameComponent implements OnInit {
     ];
 
     this.user = await this.userService.getCharacterDetails();
+    console.log(this.user);
+    console.log("can move is at " + this.user.canMove);
+    this.canMove = this.user.canMove;
   }
 
   openDice() {
@@ -54,6 +65,10 @@ export class GameComponent implements OnInit {
 
   closeDice() {
     this.dice = false;
+
+    // Disable dice after moving until next puzzle is completed
+    this.userService.updateCanMove(false);
+    this.canMove = false;
   }
 
   delay(ms: number) {

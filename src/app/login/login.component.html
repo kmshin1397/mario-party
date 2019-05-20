@@ -1,14 +1,3 @@
-<!-- <p-card class="card" *ngIf="authService.isLoggedIn">
-  <p-header> </p-header>
-  <div>
-    <h1>Hello {{ authService.getUser().displayName }}!</h1>
-  </div>
-  <p-footer>
-    <p-button label="Board" routerLink="/board"></p-button>
-    <p-button label="Profile" routerLink="/profile"></p-button>
-    <p-button label="Logout" (onClick)="logout()"> </p-button>
-  </p-footer>
-</p-card> -->
 <p-card class="card animated bounceIn" *ngIf="!authService.isLoggedIn">
   <div>
     <h1>Choose a character!</h1>
@@ -21,12 +10,6 @@
     (afterChange)="afterChange($event)"
   >
     <div ngxSlickItem *ngFor="let character of characters" class="slide">
-      <!-- <img
-        class="profile-pic"
-        src="./../../assets/{{ character.defaultPicture }}"
-        alt=""
-        width="100%"
-      /> -->
       <app-icon [character]="character"></app-icon>
       <h4>{{ character.name }}</h4>
     </div>

@@ -2,11 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { MenuItem } from "primeng/api";
 
 @Component({
-  selector: "app-rules",
-  templateUrl: "./rules.component.html",
-  styleUrls: ["./rules.component.css"]
+  selector: "app-scoreboard",
+  templateUrl: "./scoreboard.component.html",
+  styleUrls: ["./scoreboard.component.css"]
 })
-export class RulesComponent implements OnInit {
+export class ScoreboardComponent implements OnInit {
   items: MenuItem[];
 
   constructor() {}
@@ -19,14 +19,14 @@ export class RulesComponent implements OnInit {
         routerLink: "/game"
       },
       {
+        label: "Rules",
+        icon: "fas fa-gavel",
+        routerLink: "/rules"
+      },
+      {
         label: "Profile",
         icon: "fas fa-user-alt",
         routerLink: "/profile"
-      },
-      {
-        label: "Scoreboard",
-        icon: "fas fa-list-ol",
-        routerLink: "/scoreboard"
       },
       {
         label: "QR Reader",

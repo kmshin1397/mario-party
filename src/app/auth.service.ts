@@ -53,8 +53,8 @@ export class AuthService {
   updateUser() {
     this.afAuth.auth.currentUser
       .updateProfile({
-        displayName: "Bob-omb",
-        photoURL: "./../../assets/bob-omb.png"
+        displayName: "Dry Bones",
+        photoURL: "./../../assets/dry_bones.png"
       })
       .then(function() {
         // Update successful.

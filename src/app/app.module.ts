@@ -21,6 +21,8 @@ import { SlickCarouselModule } from "ngx-slick-carousel";
 
 import { AngularFontAwesomeModule } from "angular-font-awesome";
 
+import { ZXingScannerModule } from "@zxing/ngx-scanner";
+
 import { environment } from "../environments/environment";
 import { LoginComponent } from "./login/login.component";
 import { WelcomeComponent } from "./welcome/welcome.component";
@@ -28,6 +30,8 @@ import { ProfileComponent } from "./profile/profile.component";
 import { SharedModule } from "../app/shared/shared.module";
 import { GameModule } from "../app/game/game.module";
 import { RulesComponent } from "./rules/rules.component";
+import { QrComponent } from "./qr/qr.component";
+import { ScoreboardComponent } from "./scoreboard/scoreboard.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +39,9 @@ import { RulesComponent } from "./rules/rules.component";
     LoginComponent,
     WelcomeComponent,
     ProfileComponent,
-    RulesComponent
+    RulesComponent,
+    QrComponent,
+    ScoreboardComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,8 @@ import { RulesComponent } from "./rules/rules.component";
     CardModule,
     ButtonModule,
     SlickCarouselModule,
-    AccordionModule
+    AccordionModule,
+    ZXingScannerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

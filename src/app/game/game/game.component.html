@@ -6,6 +6,7 @@
 <div class="footer">
   <button
     pButton
+    [disabled]="!canMove"
     type="button"
     label="Roll a die!"
     class="ui-button-rounded"

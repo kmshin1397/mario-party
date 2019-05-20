@@ -11,8 +11,8 @@ export const LoginInfo: CharacterLoginInfo[] = [
     password: "ditchday2019"
   },
   {
-    name: "Whomp",
-    email: "whomp@marioparty.edu",
+    name: "Dry Bones",
+    email: "drybones@marioparty.edu",
     password: "ditchday2019"
   },
   {

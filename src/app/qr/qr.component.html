@@ -1,0 +1,13 @@
+<app-menu [items]="items"></app-menu>
+<div class="header">
+  <h2>QR Reader</h2>
+</div>
+<div class="container">
+  <zxing-scanner
+    class="scanner"
+    #scanner
+    (scanSuccess)="processQR($event)"
+    (camerasFound)="camerasFoundHandler($event)"
+  ></zxing-scanner>
+  <h4>Point the camera at the QR code!</h4>
+</div>

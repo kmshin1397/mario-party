@@ -15,7 +15,7 @@ export class UserService {
   constructor(private authService: AuthService, private afs: AngularFirestore) {
     this.docIdMap = new Map<string, number>();
     this.docIdMap.set("Kamek", 1);
-    this.docIdMap.set("Whomp", 2);
+    this.docIdMap.set("Dry Bones", 2);
     this.docIdMap.set("Piranha Plant", 3);
     this.docIdMap.set("Shy Guy", 4);
     this.docIdMap.set("Bob-omb", 5);
@@ -57,6 +57,21 @@ export class UserService {
         .doc(this.docIdMap.get(this.userName).toString())
         .update({
           currentLocIndex: newIndex
+        });
+    }
+  }
+
+  updateCanMove(newBool: boolean) {
+    console.log("Updating can move");
+    if (this.authService.isLoggedIn) {
+      if (this.userName == undefined) {
+        this.userName = this.authService.getUser().displayName;
+      }
+      this.afs
+        .collection("characters")
+        .doc(this.docIdMap.get(this.userName).toString())
+        .update({
+          canMove: newBool
         });
     }
   }

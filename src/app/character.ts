@@ -8,6 +8,7 @@ export class Character {
   numCoins: number;
   defaultPicture: string;
   color: string;
+  canMove: boolean;
 
   constructor(data: any) {
     this.id = data.id;
@@ -19,5 +20,6 @@ export class Character {
     this.numCoins = data.numCoins;
     this.defaultPicture = data.defaultPicture;
     this.color = data.color;
+    this.canMove = data.canMove;
   }
 }

@@ -1,0 +1,45 @@
+.container {
+  margin: auto;
+  position: fixed;
+  top: 20vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+  height: 400px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+
+.container h4 {
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.scanner {
+  border: 5px solid black;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 4px darkgoldenrod;
+}
+
+.header {
+  position: fixed;
+  top: 6.5vh;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.header h2 {
+  font-family: "Mario Party";
+  font-size: 20px;
+  text-shadow: 1px 2px 2px goldenrod;
+}
+
+@media (max-width: 350px) {
+  .scanner {
+    padding: 5px;
+    border-radius: 5px;
+  }
+}

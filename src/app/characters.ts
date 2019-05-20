@@ -10,18 +10,20 @@ export const Characters: Character[] = [
     numStars: 0,
     numCoins: 0,
     defaultPicture: "kamek.png",
-    color: "blue"
+    color: "blue",
+    canMove: false
   },
   {
     id: 2,
-    name: "Whomp",
+    name: "Dry Bones",
     members: [],
     currentLoc: "",
     currentLocIndex: 0,
     numStars: 0,
     numCoins: 0,
-    defaultPicture: "whomp.png",
-    color: "gray"
+    defaultPicture: "dry_bones.png",
+    color: "gray",
+    canMove: false
   },
   {
     id: 3,
@@ -32,7 +34,8 @@ export const Characters: Character[] = [
     numStars: 0,
     numCoins: 0,
     defaultPicture: "piranha_plant.png",
-    color: "green"
+    color: "green",
+    canMove: false
   },
   {
     id: 4,
@@ -43,7 +46,8 @@ export const Characters: Character[] = [
     numStars: 0,
     numCoins: 0,
     defaultPicture: "shyguy.png",
-    color: "red"
+    color: "red",
+    canMove: false
   },
   {
     id: 5,
@@ -54,6 +58,7 @@ export const Characters: Character[] = [
     numStars: 0,
     numCoins: 0,
     defaultPicture: "bob-omb.png",
-    color: "black"
+    color: "black",
+    canMove: false
   }
 ];
