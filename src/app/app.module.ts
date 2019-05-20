@@ -15,7 +15,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 // PrimeNG
 import { CardModule } from "primeng/card";
 import { ButtonModule } from "primeng/button";
-import { AccordionModule } from "primeng/accordion";
+import { TabViewModule } from "primeng/tabview";
 import { TableModule } from "primeng/table";
 
 import { SlickCarouselModule } from "ngx-slick-carousel";
@@ -59,7 +59,7 @@ import { ScoreboardComponent } from "./scoreboard/scoreboard.component";
     CardModule,
     ButtonModule,
     SlickCarouselModule,
-    AccordionModule,
+    TabViewModule,
     TableModule,
     ZXingScannerModule
   ],

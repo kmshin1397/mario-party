@@ -1,11 +1,16 @@
 .card {
-  position: fixed;
-  top: 10vh;
+  position: absolute;
+  top: 1vh;
   left: 2.5%;
   z-index: 99;
   width: 95%;
   height: auto;
   text-align: center;
+  margin-bottom: 50px;
+}
+:host >>> .card .ui-card {
+  padding: 0;
+  height: 80vh;
 }
 
 :host >>> .slick-dots {
@@ -70,3 +75,14 @@
   color: darkgoldenrod !important;
   text-shadow: 2px 2px 3px #444444 !important;
 } */
+
+:host >>> .card .ui-card {
+  padding: 0;
+  height: 85vh;
+}
+.filler {
+  height: 30px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}

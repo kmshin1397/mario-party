@@ -8,9 +8,8 @@
       </h2>
     </p-header>
     <div class="container">
-      <h4>Here are the rules of the game:</h4>
-      <p-accordion class="accordion" [multiple]="true">
-        <p-accordionTab header="Overview">
+      <p-tabView class="accordion">
+        <p-tabPanel header="Overview">
           You and your stack are now immersed in a game of Mario Party. You must
           traverse the game board (encompassing all of campus), participating in
           mini-games and missions at every turn. You cannot advance to your next
@@ -18,8 +17,8 @@
           Stars and coins will be awarded based on your performance in these.
           Coins can be used to buy items/perks in future games. Whoever has the
           most stars at the end wins!
-        </p-accordionTab>
-        <p-accordionTab header="Stars">
+        </p-tabPanel>
+        <p-tabPanel header="Stars">
           <div class="row">
             <img class="icon" src="../../assets/star.png" />
             <p>
@@ -30,8 +29,8 @@
               hidden missions <i class="far fa-smile-wink"></i>
             </p>
           </div>
-        </p-accordionTab>
-        <p-accordionTab header="Coins">
+        </p-tabPanel>
+        <p-tabPanel header="Coins">
           <div class="row">
             <img class="icon" src="../../assets/coin.png" />
             <p>
@@ -42,24 +41,28 @@
               certain puzzles, etc.
             </p>
           </div>
-        </p-accordionTab>
-        <p-accordionTab header="The App">
+        </p-tabPanel>
+        <p-tabPanel header="The App">
           <div class="row">
             <p>
               This app is the backbone of the party. Here, you'll find:<br /><br />
-              <b>The Profile</b> This is your teams profile page. You can track
-              how many stars and coins your team has here.<br />
-              <b>The Scoreboard</b> Checkout how you're doing relative to the
-              rest of the stack! All teams' stars and coins will be listed here.
-              <b>The Game</b> Go here to progress in the game. Upon unlocking
-              the next turn, you'll be able to roll the dice and move along the
+              <b>Profile</b> This is your teams profile page. You can track how
+              many stars and coins your team has here.<br />
+              <b>Scoreboard</b> Checkout how you're doing relative to the rest
+              of the stack! All teams' stars and coins will be listed here.<br />
+              <b>Game</b> Go here to progress in the game. Upon unlocking the
+              next turn, you'll be able to roll the dice and move along the
               board. A clue to the next event location will then be revealed to
-              you.
+              you.<br />
+              <b>QR Reader</b> At various points in the game, you will need to
+              decode QR Codes. You can use the included decoder at the QR Reader
+              page to do this.
             </p>
           </div>
-        </p-accordionTab>
-      </p-accordion>
+        </p-tabPanel>
+      </p-tabView>
     </div>
     <div class="footer"></div>
   </p-card>
 </div>
+<div class="filler"></div>

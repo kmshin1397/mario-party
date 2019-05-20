@@ -11,3 +11,60 @@
   ></zxing-scanner>
   <h4>Point the camera at the QR code!</h4>
 </div>
+
+<div *ngIf="showStar" class="animated flipInY fast">
+  <p-card class="card">
+    <p-header>
+      <h2 class="name">
+        Congrats!
+      </h2>
+      <button class="float-right" (click)="closeStar()">X</button>
+    </p-header>
+    <div class="container">
+      <h4>
+        You've acquired a star! You may now roll the dice again and move on to
+        the next turn.
+      </h4>
+      <img
+        class="icon animated infinite wobble slow"
+        src="../../assets/star.png"
+      />
+    </div>
+    <div class="footer"></div>
+  </p-card>
+</div>
+
+<div *ngIf="showCoin" class="animated flipInY fast">
+  <p-card class="card">
+    <p-header>
+      <h2 class="name">
+        Congrats!
+      </h2>
+      <button class="float-right" (click)="closeCoin()">X</button>
+    </p-header>
+    <div class="container">
+      <h4>You've acquired {{ this.numCoins }} coins!</h4>
+      <img
+        class="icon animated infinite wobble slow"
+        src="../../assets/coin.png"
+      />
+    </div>
+    <div class="footer"></div>
+  </p-card>
+</div>
+
+<div *ngIf="showPuzzle" class="animated flipInY fast">
+  <p-card class="card">
+    <p-header>
+      <h2 class="name">
+        Congrats!
+      </h2>
+      <button class="float-right" (click)="closePuzzle()">X</button>
+    </p-header>
+    <div class="msg-container">
+      <h4>You've solved the puzzle! Here's what the code says:</h4>
+      <div class="msg">{{ this.puzzleMsg }}</div>
+    </div>
+    <div class="footer"></div>
+  </p-card>
+</div>

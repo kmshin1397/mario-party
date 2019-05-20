@@ -43,3 +43,70 @@
     border-radius: 5px;
   }
 }
+
+.name {
+  font-family: "Mario Party";
+  padding-left: 25px;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  /* background-color: #007ad9; */
+  color: black;
+  text-shadow: 1px 2px 2px goldenrod;
+}
+
+.card {
+  position: absolute;
+  top: 10vh;
+  margin-bottom: 30px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 0px 20px 20px 20px;
+}
+
+.msg-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 0px 20px 20px 20px;
+}
+
+:host >>> .card .ui-card {
+  padding: 0;
+  height: 75vh;
+  width: 95vw;
+}
+:host >>> .card .ui-card-body {
+  padding: 0;
+  height: 63vh;
+}
+
+.float-right {
+  top: 25px;
+  right: 10px;
+  position: absolute;
+  background: transparent;
+  border: none;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.msg {
+  background-color: rgba(218, 165, 32, 0.527);
+  border: 2px solid #333333;
+  padding: 20px;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  text-shadow: 0px 1px 1px #333333;
+  letter-spacing: 0.1em;
+  margin-top: 20px;
+}

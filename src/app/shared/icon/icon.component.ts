@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class IconComponent implements OnInit {
   @Input()
-  private character: any;
+  character: any;
 
   constructor() {}
 

@@ -1,11 +1,11 @@
 .name {
   font-family: "Mario Party";
+  padding-top: 25px;
   padding-left: 25px;
-  padding-top: 20px;
-  padding-bottom: 15px;
   /* background-color: #007ad9; */
   color: black;
   text-shadow: 1px 2px 2px goldenrod;
+  font-size: 16px;
 }
 
 .container {
@@ -20,32 +20,56 @@
 :host >>> .ui-card-body {
   padding: 0;
 }
+:host >>> .card .ui-card {
+  padding: 0;
+  height: 80vh;
+}
 
 .card {
-  position: fixed;
+  position: absolute;
   top: 10vh;
 }
 
-:host
-  >>> .accordion
-  .ui-accordion
-  .ui-accordion-header:not(.ui-state-disabled).ui-state-active
-  a {
+:host >>> .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active {
   background-color: goldenrod !important;
+  border: 1px solid goldenrod;
   color: black !important;
 }
 
 :host
   >>> .accordion
-  .ui-accordion
-  .ui-accordion-header:not(.ui-state-disabled).ui-state-active
-  a
-  .ui-accordion-toggle-icon {
+  .ui-tabview.ui-tabview-top
+  .ui-tabview-nav
+  li.ui-state-active
+  a,
+:host >>> .accordion .ui-tabview.ui-tabview-top .ui-tabview-nav li a {
+  padding: 0.15em;
+}
+
+:host
+  >>> .accordion
+  .ui-tabview.ui-tabview-top
+  .ui-tabview-nav
+  li.ui-state-active
+  a,
+:host
+  >>> .accordion
+  .ui-tabview.ui-tabview-top
+  .ui-tabview-nav
+  li.ui-state-active
+  .ui-tabview-close {
   color: black !important;
 }
 
-:host >>> .accordion .ui-accordion .ui-accordion-header a {
-  background-color: lemonchiffon !important;
+:host >>> .accordion .ui-tabview.ui-tabview-top .ui-tabview-nav li {
+  width: 25%;
+  font-size: 12px;
+  margin-right: 0;
+}
+
+:host >>> .accordion .ui-tabview .ui-tabview-panels .ui-tabview-panel {
+  height: 50vh;
+  overflow-y: scroll;
 }
 
 .row {
@@ -60,4 +84,10 @@
   width: 30px;
   height: 30px;
   margin-right: 10px;
+}
+.filler {
+  height: 30px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }

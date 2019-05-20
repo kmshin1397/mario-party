@@ -12,7 +12,7 @@ export class WelcomeComponent implements OnInit {
   bounce: any;
 
   begun: Boolean;
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.begun = false;

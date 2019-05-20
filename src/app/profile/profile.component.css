@@ -8,6 +8,11 @@
   color: white;
   text-shadow: 1px 2px 2px #444444;
   border-bottom: 1px 1px 2px #cccccc;
+  font-size: 14px;
+  letter-spacing: 0.1em !important;
+  height: 12vh;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .pic {
@@ -20,6 +25,7 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
+  height: 55vh;
 }
 
 .row {
@@ -36,17 +42,34 @@
   height: 50px;
 }
 
-:host >>> .ui-card-body {
+:host >>> .card .ui-card-body {
   padding: 0;
+  height: 63vh;
 }
 
 .footer {
   background-color: #007ad9;
-  margin-top: 1em;
-  height: 3em;
+  width: 100%;
+  height: 8vh;
 }
 
 .card {
-  position: fixed;
+  position: absolute;
   top: 10vh;
+}
+
+:host >>> .card .ui-card {
+  padding: 0;
+  height: 75vh;
+}
+
+:host >>> .card .ui-card-header {
+  height: 12vh;
+}
+
+.filler {
+  height: 30px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }

@@ -14,9 +14,17 @@ export class QrComponent implements OnInit {
 
   items: MenuItem[];
 
+  showStar: boolean;
+  showCoin: boolean;
+  numCoins: number;
+  showPuzzle: boolean;
+  puzzleMsg: string;
+
   constructor(private userService: UserService) {}
 
   ngOnInit() {
+    this.showStar = false;
+    this.showCoin = false;
     this.items = [
       {
         label: "Game",
@@ -48,12 +56,45 @@ export class QrComponent implements OnInit {
   processQR(code: string) {
     console.log(code);
     var starRE = new RegExp("^STAR");
+    var coinRE = new RegExp("^COIN");
     if (starRE.test(code)) {
       this.userService.updateCanMove(true);
+      this.showStar = true;
+    } else if (coinRE.test(code)) {
+      this.numCoins = parseInt(code.split(" ")[1]);
+      this.showCoin = true;
+    } else {
+      this.puzzleMsg = code;
+      this.showPuzzle = true;
     }
   }
 
   camerasFoundHandler(event) {
-    this.scanner.scan(event[0].deviceId);
+    // console.log(camera);
+
+    // Find camera
+    var backRE = new RegExp("back", "i");
+    var backCamera = event[0];
+    for (var i = 0; i < event.length; i++) {
+      var camera = event[i];
+      // Found
+      if (backRE.test(camera.label)) {
+        backCamera = camera;
+      }
+    }
+
+    this.scanner.scan(backCamera.deviceId);
+  }
+
+  closeStar() {
+    this.showStar = false;
+  }
+
+  closeCoin() {
+    this.showCoin = false;
+  }
+
+  closePuzzle() {
+    this.showPuzzle = false;
   }
 }

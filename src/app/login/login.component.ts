@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   loggedIn: Boolean;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.characters = Characters;

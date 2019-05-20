@@ -1,53 +1,19 @@
-:host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-text,
-:host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-icon {
-  color: #333333;
-  text-shadow: 1px 1px 2px darkgoldenrod;
-  font-size: 11px;
-  letter-spacing: 0.11em;
-}
-
-:host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-text:hover,
-:host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-icon:hover {
-  cursor: pointer;
-}
-
-:host >>> .ui-menubar {
-  padding: 0.15em;
-  background-color: inherit;
-  border: none;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  /* border-bottom: 1px solid #ccc; */
-}
-
-@media (max-width: 350px) {
-  :host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-text,
-  :host >>> .ui-menubar .ui-menuitem-link .ui-menuitem-icon {
-    font-size: 11px;
-  }
-
-  :host >>> .ui-menubar .ui-menuitem-link {
-    padding: 0.5em !important;
-  }
-}
-
 .bar {
   padding: 0.15em;
   background-color: inherit;
   border: none;
   width: 100vw;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
+  z-index: 999;
 }
 
 .sidenav {
   height: 100%;
   width: 200px;
   position: fixed;
-  z-index: 1;
+  z-index: 999;
   top: 0;
   left: 0;
   background-color: rgb(0, 0, 0, 0.88);
