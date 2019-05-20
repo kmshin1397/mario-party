@@ -93,4 +93,40 @@ export class UserService {
         });
     }
   }
+
+  async getScoreboardData() {
+    if (this.authService.isLoggedIn) {
+      this.userName = this.authService.getUser().displayName;
+      var queryCollection = this.afs.collection("characters", ref =>
+        ref
+          .orderBy("numStars", "desc")
+          .orderBy("numCoins", "desc")
+          .orderBy("name", "asc")
+      );
+
+      var returnList = [];
+      await queryCollection
+        .get()
+        .toPromise()
+        .then(snapshot => {
+          if (snapshot.empty) {
+            console.log("No matching documents.");
+            return;
+          }
+          snapshot.forEach(doc => {
+            var data = doc.data();
+            if (data.name != "Bob-omb") {
+              returnList.push({
+                name: data.name,
+                numStars: data.numStars,
+                numCoins: data.numCoins,
+                defaultPicture: data.defaultPicture
+              });
+            }
+          });
+        });
+
+      return returnList;
+    }
+  }
 }

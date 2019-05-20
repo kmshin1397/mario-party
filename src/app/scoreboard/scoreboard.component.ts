@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuItem } from "primeng/api";
+import { UserService } from "../user.service";
 
 @Component({
   selector: "app-scoreboard",
@@ -9,7 +10,10 @@ import { MenuItem } from "primeng/api";
 export class ScoreboardComponent implements OnInit {
   items: MenuItem[];
 
-  constructor() {}
+  scoreboardData: any[];
+  cols: any[];
+
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
     this.items = [
@@ -37,6 +41,17 @@ export class ScoreboardComponent implements OnInit {
         label: "Logout",
         icon: "fas fa-sign-out-alt"
       }
+    ];
+
+    this.userService.getScoreboardData().then(data => {
+      this.scoreboardData = data;
+      console.log(this.scoreboardData);
+    });
+
+    this.cols = [
+      { field: "name", header: "Team" },
+      { field: "numStars", header: "Stars" },
+      { field: "numCoins", header: "Coins" }
     ];
   }
 }

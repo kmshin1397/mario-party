@@ -1,4 +1,42 @@
 <app-menu [items]="items"></app-menu>
-<p>
-  scoreboard works!
-</p>
+
+<div class="animated flipInY fast">
+  <p-card class="card">
+    <p-header>
+      <h2 class="name">
+        Results
+      </h2>
+    </p-header>
+    <div class="container">
+      <p-table [value]="scoreboardData">
+        <ng-template pTemplate="header">
+          <tr>
+            <th *ngFor="let col of cols">
+              <h3>{{ col.header }}</h3>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-char>
+          <tr>
+            <td>
+              <div class="cell"><app-icon [character]="char"></app-icon></div>
+            </td>
+            <td>
+              <div class="cell">
+                <img class="icon" src="../../assets/star.png" />
+                <h4>x{{ char.numStars }}</h4>
+              </div>
+            </td>
+            <td>
+              <div class="cell">
+                <img class="icon" src="../../assets/coin.png" />
+                <h4>x{{ char.numCoins }}</h4>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="footer"></div>
+  </p-card>
+</div>
