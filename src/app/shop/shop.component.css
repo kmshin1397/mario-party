@@ -8,15 +8,6 @@
   text-shadow: 1px 2px 2px goldenrod;
 }
 
-.card,
-.msg-card {
-  position: absolute;
-  top: 10vh;
-  left: 2.5vw;
-  width: 95vw;
-  margin-bottom: 30px;
-}
-
 .container {
   display: flex;
   justify-content: center;
@@ -109,14 +100,21 @@
   padding: 0;
   height: 75vh;
   width: 95vw;
-  left: 2.5vw;
   position: absolute;
   top: 10vh;
 }
-:host >>> .msg-card .ui-card-body,
-:host >>> .card .ui-card-body {
+:host >>> .msg-card .ui-card-body {
   padding: 0;
   height: 63vh;
+}
+
+:host >>> .card .ui-card-body {
+  padding: 0;
+}
+
+:host >>> .card .ui-card-content {
+  height: 63vh;
+  width: 95vw;
 }
 
 .float-right {
@@ -144,4 +142,24 @@
   height: 100%;
   justify-content: center;
   align-items: center;
+}
+
+:host >>> .ui-button {
+  background-color: #333333;
+  border: 1px solid #333333;
+  box-shadow: 1px 1px 2px #444444;
+  margin-top: 15px;
+  letter-spacing: 0.1em !important;
+  color: goldenrod;
+  text-shadow: 1px 2px 3px black;
+  font-weight: bold;
+}
+:host >>> .ui-button-secondary {
+  text-shadow: none;
+}
+
+:host >>> .ui-button:enabled:active,
+:host >>> .ui-button:enabled:hover {
+  background-color: darkgoldenrod;
+  border: 1px solid darkgoldenrod;
 }
