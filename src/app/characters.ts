@@ -16,7 +16,8 @@ export const Characters: Character[] = [
     diceRolls: [],
     coinsAcquired: [],
     coinsSpent: 0,
-    starsAcquired: []
+    starsAcquired: [],
+    hintsAvailable: 0
   },
   {
     id: 2,
@@ -33,7 +34,8 @@ export const Characters: Character[] = [
     diceRolls: [],
     coinsAcquired: [],
     coinsSpent: 0,
-    starsAcquired: []
+    starsAcquired: [],
+    hintsAvailable: 0
   },
   {
     id: 3,
@@ -50,7 +52,8 @@ export const Characters: Character[] = [
     diceRolls: [],
     coinsAcquired: [],
     coinsSpent: 0,
-    starsAcquired: []
+    starsAcquired: [],
+    hintsAvailable: 0
   },
   {
     id: 4,
@@ -67,7 +70,8 @@ export const Characters: Character[] = [
     diceRolls: [],
     coinsAcquired: [],
     coinsSpent: 0,
-    starsAcquired: []
+    starsAcquired: [],
+    hintsAvailable: 0
   },
   {
     id: 5,
@@ -84,6 +88,7 @@ export const Characters: Character[] = [
     diceRolls: [],
     coinsAcquired: [],
     coinsSpent: 0,
-    starsAcquired: []
+    starsAcquired: [],
+    hintsAvailable: 0
   }
 ];

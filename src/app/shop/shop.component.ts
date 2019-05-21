@@ -45,12 +45,17 @@ export class ShopComponent implements OnInit {
   displayDialogue: boolean;
   loadingPur: boolean;
   showPurchase: boolean;
+  rollRNG: boolean;
 
   userData: Character;
 
   ready: boolean = false;
 
   errMsg: string;
+
+  // Result of random bonus roll
+  rng: any;
+  showRandomPurchase: boolean;
 
   constructor(
     private userService: UserService,
@@ -60,7 +65,9 @@ export class ShopComponent implements OnInit {
   async ngOnInit() {
     this.displayDialogue = false;
     this.showPurchase = false;
+    this.showRandomPurchase = false;
     this.loadingPur = false;
+    this.rollRNG = false;
     this.items = [
       {
         label: "Game",
@@ -128,19 +135,30 @@ export class ShopComponent implements OnInit {
       this.errMsg = "There are no more of these in stock!";
       this.addSingle();
     } else if (this.userData.numCoins >= this.selectedItem.price) {
-      this.loadingPurchase();
-      await Promise.all([
-        this.userService.subtractCoins(this.selectedItem.price),
-        this.userService.buyItem(this.selectedItem.name)
-      ]);
-      this.loadingPur = false;
-      this.closeDialogue();
-      this.showPurchase = true;
-      this.ready = false;
-      this.userService.getShopData().then(data => {
-        this.shopData = data;
-        this.ready = true;
-      });
+      if (this.selectedItem.name != "Random Bonus Dice") {
+        this.loadingPurchase();
+        await Promise.all([
+          this.userService.subtractCoins(this.selectedItem.price),
+          this.userService.buyItem(this.selectedItem.name)
+        ]);
+        this.loadingPur = false;
+        this.closeDialogue();
+        this.showPurchase = true;
+        this.ready = false;
+        this.userService.getShopData().then(data => {
+          this.shopData = data;
+          this.ready = true;
+        });
+      } else {
+        this.loadingPurchase();
+        await Promise.all([
+          this.userService.subtractCoins(this.selectedItem.price),
+          this.userService.buyItem(this.selectedItem.name)
+        ]);
+        this.loadingPur = false;
+        this.closeDialogue();
+        this.rollRNG = true;
+      }
     } else {
       this.closeDialogue();
       this.errMsg = "You don't have enough coins for this!";
@@ -162,5 +180,50 @@ export class ShopComponent implements OnInit {
 
   clear() {
     this.messageService.clear();
+  }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async diceRoll(event) {
+    console.log(event);
+
+    await this.delay(1800);
+
+    this.rng = event;
+
+    switch (this.rng.roll) {
+      case 2: {
+        this.userData = await this.userService.getCharacterDetails();
+        this.userService.subtractCoins(this.rng.numCoins);
+        break;
+      }
+      case 3: {
+        this.userService.addStar(-1 * Math.random());
+        break;
+      }
+
+      case 5: {
+        this.userService.addHints(this.rng.numHints);
+        break;
+      }
+      case 6: {
+        this.userData = await this.userService.getCharacterDetails();
+        this.userService.addCoins(this.rng.numCoins, Math.random());
+        break;
+      }
+    }
+
+    this.showRandomPurchase = true;
+    this.closeDice();
+  }
+
+  closeDice() {
+    this.rollRNG = false;
+  }
+
+  closeRandomPurchase() {
+    this.showRandomPurchase = false;
   }
 }

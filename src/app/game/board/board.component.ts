@@ -322,6 +322,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
 
         this.userService.updateLocIndex(this.currNode);
       }
+      this.userService.resetPriceScale("Puzzle Hint");
     }
   }
 }

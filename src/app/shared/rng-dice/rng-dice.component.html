@@ -1,0 +1,58 @@
+<p-card class="overlay">
+  <!-- <div class="close-button">
+    <button (click)="close()">X</button>
+  </div> -->
+  <div class="dice-board">
+    <div class="container-dice">
+      <div #dice1 id="dice1" class="dice dice-one">
+        <div id="dice-one-side-one" class="side one">
+          <div class="dice-side">
+            <img class="fill-icon" src="../../assets/coin.png" />
+          </div>
+        </div>
+        <div id="dice-one-side-two" class="side two">
+          <div class="dice-side">
+            <img class="fill-icon" src="../../assets/red_coin.png" />
+          </div>
+        </div>
+        <div id="dice-one-side-three" class="side three">
+          <div class="dice-side">
+            <img class="fill-icon" src="../../assets/star.png" />
+          </div>
+        </div>
+        <div id="dice-one-side-four" class="side four">
+          <div class="dice-side">
+            <img class="fill-icon" src="../../assets/donut.png" />
+          </div>
+        </div>
+        <div id="dice-one-side-five" class="side five">
+          <div class="dice-side">
+            <img class="fill-icon" src="../../assets/hint.png" />
+          </div>
+        </div>
+        <div id="dice-one-side-six" class="side six">
+          <div class="dice-side">
+            <img
+              *ngIf="rolled"
+              class="fill-icon"
+              src="../../assets/bowser.png"
+            />
+            <h1 *ngIf="!rolled" class="number">?</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END container-dice -->
+  </div>
+  <div class="footer">
+    <button
+      pButton
+      type="button"
+      label="Roll!"
+      class="ui-button-rounded"
+      (click)="roll()"
+    ></button>
+  </div>
+  <!-- END dice-board -->
+</p-card>
+<div class="background"></div>

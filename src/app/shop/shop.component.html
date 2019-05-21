@@ -72,6 +72,7 @@
   [style]="{ width: '350px', minWidth: '200px' }"
   [minY]="70"
   [baseZIndex]="10000"
+  [transitionOptions]="'0ms'"
 >
   <div *ngIf="!loadingPur" class="dialogue">
     {{ this.selectedItem.description }}<br /><br />
@@ -113,8 +114,36 @@
     <div class="msg-container">
       <h4>You've bought a: {{ this.selectedItem.name }}!</h4>
       <img
+        *ngIf="this.selectedItem.name != 'Random Bonus Dice'"
         class="purchase-icon animated infinite flash slow"
         src="{{ this.selectedItem.iconSrc }}"
+      />
+    </div>
+    <div class="footer"></div>
+  </p-card>
+</div>
+<div *ngIf="rollRNG">
+  <app-rng-dice
+    (diceRoll)="diceRoll($event)"
+    (closed)="closeDice()"
+  ></app-rng-dice>
+</div>
+<div *ngIf="showRandomPurchase" class="animated zoomIn fast">
+  <p-card class="msg-card">
+    <p-header>
+      <h2 *ngIf="this.rng.type == 'good'" class="name">
+        Congrats!
+      </h2>
+      <h2 *ngIf="this.rng.type == 'bad'" class="name">
+        Oh no!
+      </h2>
+      <button class="float-right" (click)="closeRandomPurchase()">X</button>
+    </p-header>
+    <div class="msg-container">
+      <h4>{{ this.rng.msg }}!</h4>
+      <img
+        class="purchase-icon animated infinite flash slow"
+        src="{{ this.rng.iconSrc }}"
       />
     </div>
     <div class="footer"></div>

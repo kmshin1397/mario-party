@@ -103,6 +103,29 @@ export class UserService {
     }
   }
 
+  async addHints(numHints: number) {
+    console.log("Adding hints");
+    if (this.authService.isLoggedIn) {
+      if (this.userName == undefined) {
+        this.userName = this.authService.getUser().displayName;
+      }
+
+      this.getCharacterDetails().then(character => {
+        var hints = this.character.hintsAvailable + numHints;
+
+        var doc = this.afs
+          .collection("characters")
+          .doc(this.docIdMap.get(this.userName).toString());
+        doc.set(
+          {
+            hintsAvailable: hints
+          },
+          { merge: true }
+        );
+      });
+    }
+  }
+
   async addCoins(numCoins: number, coinId: number) {
     console.log("Adding coins");
     if (this.authService.isLoggedIn) {

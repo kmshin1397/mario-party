@@ -14,6 +14,7 @@ export class Character {
   coinsSpent: number;
   coinsAcquired: number[];
   starsAcquired: number[];
+  hintsAvailable: number;
 
   constructor(data: any) {
     this.id = data.id;
@@ -30,7 +31,7 @@ export class Character {
     this.diceRolls = data.diceRolls;
     this.coinsSpent = data.coinsSpent;
 
-    console.log("Coins acquired:", data.coinsAcquired);
+    this.hintsAvailable = data.hintsAvailable;
 
     this.coinsAcquired = data.coinsAcquired;
 
