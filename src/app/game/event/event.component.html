@@ -87,6 +87,19 @@
           src="../../assets/waluigi.png"
         />
       </div>
+      <div *ngIf="eventType.type == 'goto'" class="msg-container">
+        <h4>
+          You've advanced to the next location!
+        </h4>
+        <p>
+          Go to <b>{{ eventType.destination }}</b
+          >.
+        </p>
+        <img
+          class="large-icon animated infinite wobble slow delay-1s"
+          src="../../assets/hint_toad.png"
+        />
+      </div>
       <div class="footer"></div>
     </p-card>
   </div>

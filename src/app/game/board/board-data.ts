@@ -133,7 +133,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "20", type: "badluck" },
+      data: { id: "20", type: "red" },
       position: { x: 225, y: 160 },
       group: "nodes",
       removed: false,

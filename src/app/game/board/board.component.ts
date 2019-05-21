@@ -34,6 +34,8 @@ export class BoardComponent implements OnInit, AfterViewInit {
   eventType: any;
   showEvent: boolean;
 
+  destinations: Map<number, string>;
+
   @ViewChild(CytoscapeComponent)
   private cytoscapeComponent: CytoscapeComponent;
 
@@ -49,6 +51,14 @@ export class BoardComponent implements OnInit, AfterViewInit {
     this.graphData = BoardData;
     this.layoutOptions = LayoutOptions;
     this.boardPositions = BoardPositions;
+    this.destinations = new Map<number, string>();
+    this.destinations.set(21, "Moore");
+    this.destinations.set(18, "the courtyard in front of Braun");
+    this.destinations.set(16, "the bouldering cave");
+    this.destinations.set(13, "Milikan Pond");
+    this.destinations.set(4, "Tom's house for food");
+    this.destinations.set(10, "the Watson Lab courtyard");
+    this.destinations.set(8, "Frautschi Music Hall");
 
     // Add in character node
     this.graphData.nodes[this.graphData.nodes.length - 1].data.icon =
@@ -353,19 +363,20 @@ export class BoardComponent implements OnInit, AfterViewInit {
 
       this.userService.updateLocIndex(this.currNode);
     }
+    this.checkForEvents(this.currNode);
   }
 
   async checkForEvents(node: number) {
     switch (node) {
       case 25: {
-        this.eventType = { type: "toad", destNode: 16, style: "good" };
+        this.eventType = { type: "toad", destNode: 16, style: "hungry" };
         await delay(500);
         this.showEvent = true;
         break;
       }
       case 22:
       case 17: {
-        this.eventType = { type: "toad", destNode: 10, style: "good" };
+        this.eventType = { type: "toad", destNode: 10, style: "hungry" };
         await delay(500);
         this.showEvent = true;
         break;
@@ -376,7 +387,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
           dest = 16;
         }
 
-        this.eventType = { type: "luma", destNode: dest, style: "good" };
+        this.eventType = { type: "luma", destNode: dest, style: "hungry" };
         await delay(500);
         this.showEvent = true;
         break;
@@ -410,11 +421,30 @@ export class BoardComponent implements OnInit, AfterViewInit {
         this.showEvent = true;
         break;
       }
+      case 4:
+      case 8:
+      case 10:
+      case 13:
+      case 16:
+      case 18:
+      case 21: {
+        this.eventType = {
+          type: "goto",
+          destNode: -1,
+          style: "good",
+          destination: this.destinations.get(node)
+        };
+        await delay(500);
+        this.showEvent = true;
+        break;
+      }
     }
   }
 
   closeEvent(event) {
     this.showEvent = false;
-    this.moveToNode(this.eventType.destNode);
+    if (this.eventType.destNode > 0) {
+      this.moveToNode(this.eventType.destNode);
+    }
   }
 }

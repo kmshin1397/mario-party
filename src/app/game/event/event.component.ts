@@ -28,26 +28,6 @@ export class EventComponent implements OnInit {
 
   ngOnInit() {}
 
-  // Roll Function
-  spin() {
-    // Initial dice variables
-    // var diceOne = Math.floor(Math.random() * 6 + 1);
-    var nums = [3, 1, 2, 3, 4, 5, 6];
-    var diceOne = nums[this.I];
-    this.I = (this.I + 1) % 6;
-    this.elDice.nativeElement.classList.toggle("animate");
-
-    //Dice reset and display
-    for (var i = 1; i <= 6; i++) {
-      this.elDice.nativeElement.classList.remove("show-" + i);
-      if (diceOne === i) {
-        this.elDice.nativeElement.classList.add("show-" + i);
-      }
-    }
-
-    this.diceRoll.emit(diceOne);
-  }
-
   close() {
     this.closed.emit(true);
   }
