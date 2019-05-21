@@ -6,17 +6,30 @@
         Team {{ character.name }}
       </h2>
     </p-header>
-    <div class="container">
+    <div class="container-row">
       <div class="pic">
         <app-icon [character]="character"></app-icon>
       </div>
-      <div class="row">
-        <img class="icon" src="../../assets/star.png" />
-        <h4>Stars Collected: {{ character.numStars }}</h4>
-      </div>
-      <div class="row">
-        <img class="icon" src="../../assets/coin.png" />
-        <h4>Coins Collected: {{ character.numCoins }}</h4>
+      <div class="container">
+        <div class="row">
+          <img class="icon" src="../../assets/star.png" />
+          <h4>Stars collected: {{ character.numStars }}</h4>
+        </div>
+        <div class="line"></div>
+        <div class="row">
+          <img class="icon" src="../../assets/coin.png" />
+          <h4>Coins collected: {{ character.numCoins }}</h4>
+        </div>
+        <div class="line"></div>
+        <div class="row">
+          <img class="icon" src="../../assets/red_coin.png" />
+          <h4>Coins spent: {{ character.coinsSpent }}</h4>
+        </div>
+        <div class="line"></div>
+        <div class="row">
+          <img class="icon" src="../../assets/hint.png" />
+          <h4>Hints available: {{ character.hintsAvailable }}</h4>
+        </div>
       </div>
     </div>
     <div class="footer" [style.background-color]="character.color"></div>

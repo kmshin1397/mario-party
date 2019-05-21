@@ -9,3 +9,8 @@
 <!-- <div class="save">
   <button (click)="moveCharacter()">test</button>
 </div> -->
+<app-event
+  *ngIf="showEvent"
+  [eventType]="eventType"
+  (closed)="closeEvent($event)"
+></app-event>

@@ -23,7 +23,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-flow: column wrap;
+  width: 100%;
+  height: 55vh;
+}
+
+.container-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: row nowrap;
   width: 100%;
   height: 55vh;
 }
@@ -33,8 +42,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  border-top: 1px solid rgb(151, 150, 150);
+  /* border-top: 1px solid rgb(151, 150, 150); */
   padding: 10px;
+}
+
+.line {
+  width: 200px;
+  border-top: 1px solid rgb(151, 150, 150);
 }
 
 .icon {

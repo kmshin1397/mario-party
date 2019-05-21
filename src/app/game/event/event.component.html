@@ -1,15 +1,66 @@
-<p-card class="overlay">
-  <div class="close-button">
-    <button (click)="close()">X</button>
+<div *ngIf="eventType">
+  <div class="background"></div>
+  <div class="animated zoomIn fast">
+    <p-card class="msg-card">
+      <p-header>
+        <h2 *ngIf="eventType.style == 'good'" class="name">
+          Congrats!
+        </h2>
+        <h2 *ngIf="eventType.style == 'bad'" class="name">
+          Oh no!
+        </h2>
+        <button class="float-right" (click)="close()">X</button>
+      </p-header>
+      <div *ngIf="eventType.type == 'toad'" class="msg-container">
+        <h4>
+          Toad has discovered a rocket pack and wants to take you for a ride!
+        </h4>
+        <p>You'll be boosted all the way across the map!</p>
+        <img
+          class="icon animated tada delay-1s"
+          src="../../assets/toad_boost.png"
+        />
+      </div>
+      <div *ngIf="eventType.type == 'luma'" class="msg-container">
+        <h4>
+          You've encountered Luma, and he directs you to a launch star!
+        </h4>
+        <p>You'll be launched all the way across the map!</p>
+        <div class="row">
+          <img
+            class="large-icon animated infinite rotateIn fast "
+            src="../../assets/launch_star.png"
+          />
+          <img
+            class="small-icon animated infinite bounce delay-2s"
+            src="../../assets/luma.png"
+          />
+        </div>
+      </div>
+      <div *ngIf="eventType.type == 'chef'" class="msg-container">
+        <h4>
+          Getting hungry? No worries, Chef Mario's got you!
+        </h4>
+        <p>You are ushered by Chef Mario to his restaurant.</p>
+        <img
+          class="large-icon animated heartBeat delay-1s"
+          src="../../assets/chef.png"
+        />
+      </div>
+      <div *ngIf="eventType.type == 'bowser'" class="msg-container">
+        <h4>
+          Bowser's angry at your performance so far!
+        </h4>
+        <p>
+          He tosses you back the way you came to do better
+          <i class="fas fa-sad-cry"></i>
+        </p>
+        <img
+          class="large-icon animated shake delay-1s"
+          src="../../assets/bowser_angry.png"
+        />
+      </div>
+      <div class="footer"></div>
+    </p-card>
   </div>
-  <div class="footer">
-    <button
-      pButton
-      type="button"
-      label="Spin!"
-      class="ui-button-rounded"
-      (click)="spin()"
-    ></button>
-  </div>
-</p-card>
-<div class="background"></div>
+</div>

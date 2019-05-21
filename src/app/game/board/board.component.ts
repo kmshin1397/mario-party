@@ -31,6 +31,9 @@ export class BoardComponent implements OnInit, AfterViewInit {
 
   boardDataReady: boolean = false;
 
+  eventType: any;
+  showEvent: boolean;
+
   @ViewChild(CytoscapeComponent)
   private cytoscapeComponent: CytoscapeComponent;
 
@@ -41,6 +44,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
   constructor(private userService: UserService) {}
 
   async ngOnInit() {
+    this.showEvent = false;
     this.currNode = this.user.currentLocIndex;
     this.graphData = BoardData;
     this.layoutOptions = LayoutOptions;
@@ -322,7 +326,72 @@ export class BoardComponent implements OnInit, AfterViewInit {
 
         this.userService.updateLocIndex(this.currNode);
       }
+      this.checkForEvents(this.currNode);
       this.userService.resetPriceScale("Puzzle Hint");
     }
+  }
+
+  async moveToNode(nodeNum: number) {
+    await delay(500);
+    if (this.cytoscapeComponent.cy) {
+      var node = this.cytoscapeComponent.cy.getElementById("999");
+
+      // Node numbers grow downward (oops)
+      this.currNode = nodeNum;
+
+      var nextPos = this.boardPositions[this.currNode - 1];
+      var animation = node.animation({
+        position: {
+          x: nextPos.x,
+          y: nextPos.y
+        },
+        duration: 1000,
+        easing: "cubic-bezier(0.68, -0.55, 0.265, 1.55)"
+      });
+
+      await animation.play().promise();
+
+      this.userService.updateLocIndex(this.currNode);
+    }
+  }
+
+  async checkForEvents(node: number) {
+    switch (node) {
+      case 25: {
+        this.eventType = { type: "toad", destNode: 16, style: "good" };
+        await delay(500);
+        this.showEvent = true;
+        break;
+      }
+      case 15: {
+        this.eventType = { type: "bowser", destNode: 16, style: "bad" };
+        await delay(500);
+        this.showEvent = true;
+        break;
+      }
+      case 6: {
+        this.eventType = { type: "luma", destNode: 21, style: "good" };
+        await delay(500);
+        this.showEvent = true;
+        break;
+      }
+      case 12: {
+        this.eventType = { type: "chef", destNode: 4, style: "good" };
+        await delay(500);
+        this.showEvent = true;
+        break;
+      }
+      case 2: {
+        this.eventType = { type: "bowser", destNode: 13, style: "bad" };
+        await delay(500);
+        this.showEvent = true;
+        break;
+      }
+    }
+  }
+
+  closeEvent(event) {
+    this.showEvent = false;
+    this.moveToNode(this.eventType.destNode);
   }
 }

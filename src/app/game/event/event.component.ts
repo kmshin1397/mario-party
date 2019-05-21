@@ -4,7 +4,8 @@ import {
   ViewChild,
   ElementRef,
   Output,
-  EventEmitter
+  EventEmitter,
+  Input
 } from "@angular/core";
 
 @Component({
@@ -18,6 +19,8 @@ export class EventComponent implements OnInit {
   @Output() closed = new EventEmitter<boolean>();
 
   @Output() diceRoll = new EventEmitter<Number>();
+
+  @Input() eventType: any;
 
   I = 0;
 
