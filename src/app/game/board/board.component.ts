@@ -58,7 +58,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
     this.destinations.set(13, "Milikan Pond");
     this.destinations.set(4, "Tom's house for food");
     this.destinations.set(10, "the Watson Lab courtyard");
-    this.destinations.set(8, "Frautschi Music Hall");
+    this.destinations.set(20, "Beckman Auditorium");
 
     // Add in character node
     this.graphData.nodes[this.graphData.nodes.length - 1].data.icon =
@@ -421,12 +421,18 @@ export class BoardComponent implements OnInit, AfterViewInit {
         this.showEvent = true;
         break;
       }
+      case 9: {
+        this.eventType = { type: "lakitu", destNode: 20, style: "hungry" };
+        await delay(500);
+        this.showEvent = true;
+        break;
+      }
       case 4:
-      case 8:
       case 10:
       case 13:
       case 16:
       case 18:
+      case 20:
       case 21: {
         this.eventType = {
           type: "goto",

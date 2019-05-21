@@ -74,6 +74,18 @@
           src="../../assets/bowser_jr.png"
         />
       </div>
+      <div *ngIf="eventType.type == 'lakitu'" class="msg-container">
+        <h4>
+          Latiku wants your help testing out some new spike balls!
+        </h4>
+        <p>
+          Take a ride on his cloud!
+        </p>
+        <img
+          class="large-icon animated shake delay-1s"
+          src="../../assets/lakitu.png"
+        />
+      </div>
       <div *ngIf="eventType.type == 'waluigi'" class="msg-container">
         <h4>
           Waluigi wants a friend, and he's willing to give rides for it!

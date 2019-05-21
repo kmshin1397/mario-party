@@ -199,6 +199,7 @@ export class UserService {
         doc.update({
           priceScale: curDoc.data().priceScale + 1
         });
+        this.addHints(1);
       } else if (itemName == "Star") {
         this.addStar(-1 * curDoc.data().cap);
       }

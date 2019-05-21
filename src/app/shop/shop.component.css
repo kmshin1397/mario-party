@@ -110,6 +110,8 @@
   height: 75vh;
   width: 95vw;
   left: 2.5vw;
+  position: absolute;
+  top: 10vh;
 }
 :host >>> .msg-card .ui-card-body,
 :host >>> .card .ui-card-body {

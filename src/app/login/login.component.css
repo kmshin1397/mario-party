@@ -80,9 +80,10 @@
   padding: 0;
   height: 85vh;
 }
-.filler {
-  height: 30px;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
+:host >>> .dia .ui-dialog {
+  width: 90% !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  -ms-transform: translate(-50%, -50%) !important;
 }

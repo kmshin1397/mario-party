@@ -20,9 +20,12 @@ export class LoginComponent implements OnInit {
 
   loggedIn: Boolean;
 
+  promptPassword: boolean;
+
   constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit() {
+    this.promptPassword = false;
     this.characters = Characters;
   }
 
@@ -30,15 +33,25 @@ export class LoginComponent implements OnInit {
     var characterName = this.characters[this.currentSlide].name;
     var loginInfo = LoginInfo[this.currentSlide];
     var loginName = loginInfo.name;
+    console.log(characterName);
+
+    if (characterName == "Bob-omb" && this.password == undefined) {
+      this.promptPassword = true;
+      return;
+    } else if (characterName != "Bob-omb") {
+      this.password = loginInfo.password;
+    }
     if (characterName == loginName) {
-      this.authService
-        .login(loginInfo.email, loginInfo.password)
-        .then(resolve => {
-          this.router.navigateByUrl("/profile");
-        });
+      this.authService.login(loginInfo.email, this.password).then(resolve => {
+        this.router.navigateByUrl("/profile");
+      });
     } else {
       console.log("Character login failed! Character account not found");
     }
+  }
+
+  closeDialogue() {
+    this.promptPassword = false;
   }
 
   logout() {

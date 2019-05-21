@@ -6,7 +6,7 @@
 :host >>> .overlay .ui-card {
   z-index: 10 !important;
   position: relative !important;
-  top: 15vh;
+  top: 7.5vh;
   height: 450px;
   background: radial-gradient(ellipse at center, #fefcea 0%, #e7dd8e 100%);
 }

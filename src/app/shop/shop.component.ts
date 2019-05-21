@@ -155,6 +155,7 @@ export class ShopComponent implements OnInit {
           this.userService.subtractCoins(this.selectedItem.price),
           this.userService.buyItem(this.selectedItem.name)
         ]);
+
         this.loadingPur = false;
         this.closeDialogue();
         this.rollRNG = true;

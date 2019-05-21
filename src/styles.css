@@ -6,6 +6,8 @@
 
 body {
   background: whitesmoke;
+  padding-bottom: 25px;
+  height: 110vh;
 }
 
 body .ui-card {

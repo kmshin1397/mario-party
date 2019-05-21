@@ -12,7 +12,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "9", type: "red" },
+      data: { id: "9", type: "exclamation" },
       position: { x: 400, y: 260 },
       group: "nodes",
       removed: false,
@@ -34,7 +34,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "11", type: "blue" },
+      data: { id: "11", type: "red" },
       position: { x: 290, y: 360 },
       group: "nodes",
       removed: false,
@@ -133,7 +133,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "20", type: "red" },
+      data: { id: "20", type: "blue" },
       position: { x: 225, y: 160 },
       group: "nodes",
       removed: false,
@@ -265,7 +265,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "7", type: "blue" },
+      data: { id: "7", type: "red" },
       position: { x: 400, y: 475 },
       group: "nodes",
       removed: false,

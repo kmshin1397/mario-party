@@ -80,10 +80,3 @@
 :host >>> .card .ui-card-header {
   height: 12vh;
 }
-
-.filler {
-  height: 30px;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-}

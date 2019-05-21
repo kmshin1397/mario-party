@@ -19,3 +19,35 @@
   </p-footer>
 </p-card>
 <div class="filler"></div>
+<p-dialog
+  class="dia"
+  header="Password required"
+  [(visible)]="promptPassword"
+  [style]="{ width: '90%!important' }"
+  (onHide)="closeDialogue()"
+  [modal]="true"
+  [responsive]="true"
+  [style]="{ width: '350px', minWidth: '200px' }"
+  [minY]="70"
+  [baseZIndex]="10000"
+  [transitionOptions]="'0ms'"
+>
+  <input type="password" pPassword [(ngModel)]="password" />
+  <p-footer>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-check"
+      (click)="login()"
+      label="Login"
+    ></button>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-close"
+      (click)="closeDialogue()"
+      label="Cancel"
+      class="ui-button-secondary"
+    ></button>
+  </p-footer>
+</p-dialog>
