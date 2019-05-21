@@ -363,20 +363,21 @@ export class BoardComponent implements OnInit, AfterViewInit {
         this.showEvent = true;
         break;
       }
-      case 15: {
-        this.eventType = { type: "bowser", destNode: 16, style: "bad" };
+      case 17: {
+        this.eventType = { type: "toad", destNode: 10, style: "good" };
         await delay(500);
         this.showEvent = true;
         break;
       }
       case 6: {
-        this.eventType = { type: "luma", destNode: 21, style: "good" };
+        var dest = this.user.name == "Dry Bones" ? 21 : 18;
+        this.eventType = { type: "luma", destNode: dest, style: "good" };
         await delay(500);
         this.showEvent = true;
         break;
       }
       case 12: {
-        this.eventType = { type: "chef", destNode: 4, style: "good" };
+        this.eventType = { type: "chef", destNode: 4, style: "hungry" };
         await delay(500);
         this.showEvent = true;
         break;

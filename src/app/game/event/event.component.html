@@ -9,6 +9,9 @@
         <h2 *ngIf="eventType.style == 'bad'" class="name">
           Oh no!
         </h2>
+        <h2 *ngIf="eventType.style == 'hungry'" class="name">
+          Hey there!
+        </h2>
         <button class="float-right" (click)="close()">X</button>
       </p-header>
       <div *ngIf="eventType.type == 'toad'" class="msg-container">
