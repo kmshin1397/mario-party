@@ -155,7 +155,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "22", type: "blue" },
+      data: { id: "22", type: "exclamation" },
       position: { x: 330, y: 30 },
       group: "nodes",
       removed: false,
@@ -166,7 +166,7 @@ export const BoardData = {
       classes: ""
     },
     {
-      data: { id: "23", type: "exclamation" },
+      data: { id: "23", type: "blue" },
       position: { x: 450, y: 30 },
       group: "nodes",
       removed: false,
@@ -312,9 +312,9 @@ export const BoardData = {
     { data: { id: "e22", source: 22, target: 21 } },
     { data: { id: "e23", source: 23, target: 22 } },
     { data: { id: "e24", source: 24, target: 23 } },
-    { data: { id: "e25", source: 25, target: 24 } },
-    { data: { id: "e26", source: 19, target: 12 } },
-    { data: { id: "e27", source: 23, target: 10 } }
+    { data: { id: "e25", source: 25, target: 24 } }
+    // { data: { id: "e26", source: 19, target: 12 } },
+    // { data: { id: "e27", source: 23, target: 10 } }
   ]
 };
 

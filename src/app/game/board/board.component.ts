@@ -363,6 +363,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
         this.showEvent = true;
         break;
       }
+      case 22:
       case 17: {
         this.eventType = { type: "toad", destNode: 10, style: "good" };
         await delay(500);
@@ -370,20 +371,41 @@ export class BoardComponent implements OnInit, AfterViewInit {
         break;
       }
       case 6: {
-        var dest = this.user.name == "Dry Bones" ? 21 : 18;
+        var dest = this.user.name == "Kamek" ? 18 : 21;
+        if (this.user.name == "Shy Guy") {
+          dest = 16;
+        }
+
         this.eventType = { type: "luma", destNode: dest, style: "good" };
         await delay(500);
         this.showEvent = true;
         break;
       }
       case 12: {
-        this.eventType = { type: "chef", destNode: 4, style: "hungry" };
+        this.eventType =
+          this.user.name == "Shy Guy"
+            ? { type: "waluigi", destNode: 21, style: "hungry" }
+            : { type: "chef", destNode: 4, style: "hungry" };
+
         await delay(500);
         this.showEvent = true;
         break;
       }
       case 2: {
         this.eventType = { type: "bowser", destNode: 13, style: "bad" };
+        await delay(500);
+        this.showEvent = true;
+        break;
+      }
+      case 15: {
+        this.eventType = { type: "bowserjr", destNode: 18, style: "bad" };
+        await delay(500);
+        this.showEvent = true;
+        break;
+      }
+      case 19: {
+        this.eventType = { type: "chef", destNode: 4, style: "hungry" };
+
         await delay(500);
         this.showEvent = true;
         break;

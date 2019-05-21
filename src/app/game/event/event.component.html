@@ -7,7 +7,7 @@
           Congrats!
         </h2>
         <h2 *ngIf="eventType.style == 'bad'" class="name">
-          Oh no!
+          Oh no!<i class="far fa-surprise fa-2x"></i>
         </h2>
         <h2 *ngIf="eventType.style == 'hungry'" class="name">
           Hey there!
@@ -55,12 +55,36 @@
           Bowser's angry at your performance so far!
         </h4>
         <p>
-          He tosses you back the way you came to do better
-          <i class="fas fa-sad-cry"></i>
+          He tosses you back the way you came to do better...
         </p>
         <img
           class="large-icon animated shake delay-1s"
           src="../../assets/bowser_angry.png"
+        />
+      </div>
+      <div *ngIf="eventType.type == 'bowserjr'" class="msg-container">
+        <h4>
+          Bowser Jr accidentally punches you while playing around!
+        </h4>
+        <p>
+          You're knocked back a few spots!
+        </p>
+        <img
+          class="large-icon animated shake delay-1s"
+          src="../../assets/bowser_jr.png"
+        />
+      </div>
+      <div *ngIf="eventType.type == 'waluigi'" class="msg-container">
+        <h4>
+          Waluigi wants a friend, and he's willing to give rides for it!
+        </h4>
+        <p>
+          You take him up on it and take a drive.
+          <i class="fas fa-car fa-2x"></i>
+        </p>
+        <img
+          class="large-icon animated rubberBand delay-1s"
+          src="../../assets/waluigi.png"
         />
       </div>
       <div class="footer"></div>
