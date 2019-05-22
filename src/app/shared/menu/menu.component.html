@@ -10,17 +10,26 @@
     </span>
   </button>
 </div>
-<div *ngIf="menuOpen" id="mySidenav" class="sidenav animated slideInLeft fast">
-  <button class="closebtn" type="button" (click)="toggleMenu()">&times;</button>
+<div *ngIf="menuOpen">
   <div
-    class="link"
-    *ngFor="let item of items; let last = last"
-    routerLink="{{ item.routerLink }}"
-    [ngClass]="{ last: last }"
+    id="mySidenav"
+    (clickOutside)="toggleMenu()"
+    [delayClickOutsideInit]="true"
+    class="sidenav animated slideInLeft fast"
   >
-    <a *ngIf="!last"> <i class="{{ item.icon }}"></i> {{ item.label }}</a>
-    <a *ngIf="last" (click)="logout()">
-      <i class="{{ item.icon }}"></i> {{ item.label }}</a
+    <button class="closebtn" type="button" (click)="toggleMenu()">
+      &times;
+    </button>
+    <div
+      class="link"
+      *ngFor="let item of items; let last = last"
+      routerLink="{{ item.routerLink }}"
+      [ngClass]="{ last: last }"
     >
+      <a *ngIf="!last"> <i class="{{ item.icon }}"></i> {{ item.label }}</a>
+      <a *ngIf="last" (click)="logout()">
+        <i class="{{ item.icon }}"></i> {{ item.label }}</a
+      >
+    </div>
   </div>
 </div>

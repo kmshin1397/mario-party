@@ -1,3 +1,81 @@
-<p>
-  admin works!
-</p>
+<app-menu [items]="items"></app-menu>
+
+<div class="animated flipInY fast">
+  <p-card class="card">
+    <p-header>
+      <h2 class="title">
+        Welcome Bob-omb!
+      </h2>
+    </p-header>
+    <h4 class="subtitle"><b>Choose a character to edit.</b></h4>
+    <div class="container">
+      <div (click)="characterClick('Kamek')">
+        <img class="profile-pic" src="./../../assets/kamek.png" alt="" />
+      </div>
+      <div (click)="characterClick('Dry Bones')">
+        <img class="profile-pic" src="./../../assets/dry_bones.png" alt="" />
+      </div>
+      <div (click)="characterClick('Piranha Plant')">
+        <img
+          class="profile-pic"
+          src="./../../assets/piranha_plant.png"
+          alt=""
+        />
+      </div>
+      <div (click)="characterClick('Shy Guy')">
+        <img class="profile-pic" src="./../../assets/shyguy.png" alt="" />
+      </div>
+    </div>
+  </p-card>
+</div>
+<div class="bg"></div>
+<app-menu [items]="items"></app-menu>
+
+<div *ngIf="showPanel" class="animated flipInY fast">
+  <p-card class="msg-card">
+    <p-header>
+      <h2 class="title">
+        Update Form
+      </h2>
+      <button class="float-right" (click)="closePanel()">X</button>
+    </p-header>
+    <h4 class="subtitle">
+      <b>What do you want to do for {{ this.selectedCharacter }}?</b>
+    </h4>
+    <div class="col-container">
+      <div class="row">
+        <img class="icon" src="./../../assets/coin.png" alt="" />
+        <h4>Add / subtract coins:</h4>
+        <div class="spinner">
+          <p-spinner [(ngModel)]="numCoins"></p-spinner>
+        </div>
+      </div>
+      <div class="row">
+        <img class="icon" src="./../../assets/star.png" alt="" />
+        <h4>Add / subtract stars:</h4>
+        <div class="spinner">
+          <p-spinner [(ngModel)]="numStars"></p-spinner>
+        </div>
+      </div>
+      <div class="row">
+        <img class="icon" src="./../../assets/hint.png" alt="" />
+        <h4>Add / subtract hints:</h4>
+        <div class="spinner">
+          <p-spinner [(ngModel)]="numHints"></p-spinner>
+        </div>
+      </div>
+    </div>
+    <p-footer>
+      <div class="row">
+        <button
+          pButton
+          type="button"
+          label="Submit"
+          class="ui-button-raised"
+          (click)="submitForm()"
+        ></button>
+      </div>
+    </p-footer>
+  </p-card>
+</div>
+<p-toast position="top-right"></p-toast>

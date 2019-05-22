@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuItem } from "primeng/api";
+import { AuthService } from "../services/auth.service";
 
 @Component({
   selector: "app-rules",
@@ -9,7 +10,7 @@ import { MenuItem } from "primeng/api";
 export class RulesComponent implements OnInit {
   items: MenuItem[];
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.items = [
@@ -33,11 +34,26 @@ export class RulesComponent implements OnInit {
         label: "QR Reader",
         icon: "fas fa-qrcode",
         routerLink: "/qr"
-      },
-      {
-        label: "Logout",
-        icon: "fas fa-sign-out-alt"
       }
     ];
+
+    if (this.authService.isAdmin()) {
+      this.items = [
+        {
+          label: "Admin",
+          icon: "fas fa-user-lock",
+          routerLink: "/admin"
+        },
+        {
+          label: "Scoreboard",
+          icon: "fas fa-list-ol",
+          routerLink: "/scoreboard"
+        }
+      ];
+    }
+    this.items.push({
+      label: "Logout",
+      icon: "fas fa-sign-out-alt"
+    });
   }
 }

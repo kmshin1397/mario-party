@@ -8,9 +8,17 @@ import { CardModule } from "primeng/card";
 import { ButtonModule } from "primeng/button";
 import { RngDiceComponent } from "./rng-dice/rng-dice.component";
 
+import { ClickOutsideModule } from "ng-click-outside";
+
 @NgModule({
   declarations: [IconComponent, MenuComponent, RngDiceComponent],
-  imports: [CommonModule, MenubarModule, CardModule, ButtonModule],
+  imports: [
+    CommonModule,
+    MenubarModule,
+    CardModule,
+    ButtonModule,
+    ClickOutsideModule
+  ],
   exports: [IconComponent, MenuComponent, RngDiceComponent]
 })
 export class SharedModule {}

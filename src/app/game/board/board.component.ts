@@ -8,7 +8,7 @@ import {
 import { CytoscapeComponent } from "ngx-cytoscape";
 import { BoardData, LayoutOptions, BoardPositions } from "./board-data";
 import { delay } from "q";
-import { UserService } from "src/app/user.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-board",

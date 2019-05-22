@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MenuItem } from "primeng/api";
 import { ZXingScannerComponent } from "@zxing/ngx-scanner";
-import { UserService } from "../user.service";
+import { UserService } from "../services/user.service";
+import { AuthService } from "../services/auth.service";
 
 @Component({
   selector: "app-qr",
@@ -22,7 +23,10 @@ export class QrComponent implements OnInit {
 
   scannerInUse: boolean;
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
     this.showStar = false;
@@ -49,12 +53,13 @@ export class QrComponent implements OnInit {
         label: "Scoreboard",
         icon: "fas fa-list-ol",
         routerLink: "/scoreboard"
-      },
-      {
-        label: "Logout",
-        icon: "fas fa-sign-out-alt"
       }
     ];
+
+    this.items.push({
+      label: "Logout",
+      icon: "fas fa-sign-out-alt"
+    });
   }
 
   async processQR(code: string) {

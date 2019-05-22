@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges, HostBinding } from "@angular/core";
-import { AuthService } from "../auth.service";
+import { AuthService } from "../services/auth.service";
 import { Characters } from "../characters";
-import { UserService } from "../user.service";
+import { UserService } from "../services/user.service";
 
 import { MenuItem } from "primeng/api";
 import { DomSanitizer } from "@angular/platform-browser";
@@ -51,12 +51,14 @@ export class ProfileComponent implements OnInit, OnChanges {
         label: "QR Reader",
         icon: "fas fa-qrcode",
         routerLink: "/qr"
-      },
-      {
-        label: "Logout",
-        icon: "fas fa-sign-out-alt"
       }
     ];
+
+    this.items.push({
+      label: "Logout",
+      icon: "fas fa-sign-out-alt"
+    });
+
     this.refresh();
   }
 

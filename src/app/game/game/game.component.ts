@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { MenuItem } from "primeng/api";
 import { delay } from "q";
 import { BoardComponent } from "../board/board.component";
-import { UserService } from "src/app/user.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-game",

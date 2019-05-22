@@ -1,10 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
-import { AuthService } from "./../auth.service";
+import { AuthService } from "../services/auth.service";
 
 import { Characters } from "../characters";
 import { LoginInfo } from "./login-info";
+import { MessageService } from "primeng/api";
 
 @Component({
   selector: "app-login",
@@ -22,11 +23,16 @@ export class LoginComponent implements OnInit {
 
   promptPassword: boolean;
 
-  constructor(public authService: AuthService, private router: Router) {}
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit() {
     this.promptPassword = false;
     this.characters = Characters;
+    this.password = undefined;
   }
 
   login() {
@@ -35,16 +41,26 @@ export class LoginComponent implements OnInit {
     var loginName = loginInfo.name;
     console.log(characterName);
 
-    if (characterName == "Bob-omb" && this.password == undefined) {
+    if (this.password == undefined) {
       this.promptPassword = true;
       return;
-    } else if (characterName != "Bob-omb") {
-      this.password = loginInfo.password;
     }
+
     if (characterName == loginName) {
-      this.authService.login(loginInfo.email, this.password).then(resolve => {
-        this.router.navigateByUrl("/profile");
-      });
+      this.authService
+        .login(loginInfo.email, this.password)
+        .then(resolve => {
+          if (characterName == "Bob-omb") {
+            this.router.navigateByUrl("/admin");
+          } else {
+            this.router.navigateByUrl("/profile");
+          }
+        })
+        .catch(err => {
+          this.promptPassword = false;
+          this.password = undefined;
+          this.addSingle(err);
+        });
     } else {
       console.log("Character login failed! Character account not found");
     }
@@ -79,4 +95,16 @@ export class LoginComponent implements OnInit {
   }
 
   beforeChange(e) {}
+
+  addSingle(msg) {
+    this.messageService.add({
+      severity: "error",
+      summary: "Login Failed",
+      detail: msg
+    });
+  }
+
+  clear() {
+    this.messageService.clear();
+  }
 }

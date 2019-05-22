@@ -6,7 +6,7 @@ import {
   Output,
   EventEmitter
 } from "@angular/core";
-import { UserService } from "src/app/user.service";
+import { UserService } from "src/app/services/user.service";
 import { Character } from "src/app/character";
 
 @Component({

@@ -52,7 +52,9 @@
   box-shadow: 1px 1px 2px black;
   border-bottom: 1px solid gold;
 }
-
+:host >>> .card .ui-card-header {
+  border-bottom: 1px solid #cccccc;
+}
 .card h3 {
   font-family: "Mario Party";
   font-weight: 400;
@@ -65,11 +67,4 @@
   background-color: rgb(0, 0, 0, 0.85);
   box-shadow: 1px 1px 2px black;
   border: 0px solid ghostwhite;
-}
-.filler {
-  height: 50px;
-  width: 100vw;
-  position: absolute;
-  bottom: 0;
-  opacity: 0;
 }

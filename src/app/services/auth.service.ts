@@ -30,7 +30,7 @@ export class AuthService {
       var errorCode = e.code;
       var errorMessage = e.message;
 
-      console.log(errorCode, errorMessage);
+      throw e.message;
     }
   }
 
@@ -45,6 +45,11 @@ export class AuthService {
     return user !== null;
   }
 
+  isAdmin(): boolean {
+    const user = JSON.parse(localStorage.getItem("user"));
+    return user.displayName === "Bob-omb";
+  }
+
   getUser() {
     const user = JSON.parse(localStorage.getItem("user"));
     return user;
@@ -53,8 +58,8 @@ export class AuthService {
   updateUser() {
     this.afAuth.auth.currentUser
       .updateProfile({
-        displayName: "Dry Bones",
-        photoURL: "./../../assets/dry_bones.png"
+        displayName: "Shy Guy",
+        photoURL: "./../../assets/shyguy.png"
       })
       .then(function() {
         // Update successful.

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
 import { MenuItem } from "primeng/api";
-import { AuthService } from "src/app/auth.service";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-menu",
@@ -35,6 +35,11 @@ export class MenuComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  closeMenu() {
+    this.menuButton.nativeElement.classList.add("hidden");
+    this.menuOpen = false;
   }
 
   toggleMenu() {

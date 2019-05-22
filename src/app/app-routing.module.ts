@@ -8,14 +8,27 @@ import { QrComponent } from "./qr/qr.component";
 import { ScoreboardComponent } from "./scoreboard/scoreboard.component";
 import { ShopComponent } from "./shop/shop.component";
 
+import { AuthGuard } from "./guards/auth-guard.service";
+import { AdminGuard } from "./guards/admin-guard.service";
+import { AdminComponent } from "./admin/admin.component";
+
 const routes: Routes = [
   { path: "", component: WelcomeComponent },
-  { path: "game", component: GameComponent },
-  { path: "profile", component: ProfileComponent },
-  { path: "rules", component: RulesComponent },
-  { path: "qr", component: QrComponent },
-  { path: "scoreboard", component: ScoreboardComponent },
-  { path: "shop", component: ShopComponent }
+  { path: "game", component: GameComponent, canActivate: [AuthGuard] },
+  { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: "rules", component: RulesComponent, canActivate: [AuthGuard] },
+  { path: "qr", component: QrComponent, canActivate: [AuthGuard] },
+  {
+    path: "scoreboard",
+    component: ScoreboardComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: "shop", component: ShopComponent, canActivate: [AuthGuard] },
+  {
+    path: "admin",
+    component: AdminComponent,
+    canActivate: [AuthGuard, AdminGuard]
+  }
 ];
 
 @NgModule({

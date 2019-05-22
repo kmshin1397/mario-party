@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuItem } from "primeng/api";
-import { UserService } from "../user.service";
+import { UserService } from "../services/user.service";
+import { AuthService } from "../services/auth.service";
 
 @Component({
   selector: "app-scoreboard",
@@ -13,7 +14,10 @@ export class ScoreboardComponent implements OnInit {
   scoreboardData: any[];
   cols: any[];
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
     this.items = [
@@ -37,12 +41,28 @@ export class ScoreboardComponent implements OnInit {
         label: "QR Reader",
         icon: "fas fa-qrcode",
         routerLink: "/qr"
-      },
-      {
-        label: "Logout",
-        icon: "fas fa-sign-out-alt"
       }
     ];
+
+    if (this.authService.isAdmin()) {
+      this.items = [
+        {
+          label: "Admin",
+          icon: "fas fa-user-lock",
+          routerLink: "/admin"
+        },
+        {
+          label: "Rules",
+          icon: "fas fa-gavel",
+          routerLink: "/rules"
+        }
+      ];
+    }
+
+    this.items.push({
+      label: "Logout",
+      icon: "fas fa-sign-out-alt"
+    });
 
     this.userService.getScoreboardData().then(data => {
       this.scoreboardData = data;

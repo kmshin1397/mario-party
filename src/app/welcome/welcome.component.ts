@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
-import { AuthService } from "../auth.service";
+import { AuthService } from "../services/auth.service";
 import { Router } from "@angular/router";
 @Component({
   selector: "app-welcome",
@@ -23,7 +23,11 @@ export class WelcomeComponent implements OnInit {
     this.logo.nativeElement.classList.toggle("disabled");
 
     if (this.authService.isLoggedIn) {
-      this.router.navigateByUrl("/profile");
+      if (this.authService.isAdmin()) {
+        this.router.navigateByUrl("/admin");
+      } else {
+        this.router.navigateByUrl("/profile");
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuItem, MessageService } from "primeng/api";
-import { UserService } from "../user.service";
+import { UserService } from "../services/user.service";
 import {
   trigger,
   state,

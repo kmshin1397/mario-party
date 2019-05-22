@@ -21,6 +21,7 @@ import { DialogModule } from "primeng/dialog";
 import { ProgressSpinnerModule } from "primeng/progressspinner";
 import { ToastModule } from "primeng/toast";
 import { PasswordModule } from "primeng/password";
+import { SpinnerModule } from "primeng/spinner";
 
 import { SlickCarouselModule } from "ngx-slick-carousel";
 
@@ -41,6 +42,8 @@ import { ShopComponent } from "./shop/shop.component";
 import { MessageService } from "primeng/api";
 import { AdminComponent } from "./admin/admin.component";
 import { GameRoomComponent } from "./game-room/game-room.component";
+
+import { AuthGuard } from "./guards/auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -76,9 +79,10 @@ import { GameRoomComponent } from "./game-room/game-room.component";
     ZXingScannerModule,
     ProgressSpinnerModule,
     ToastModule,
-    PasswordModule
+    PasswordModule,
+    SpinnerModule
   ],
-  providers: [MessageService],
+  providers: [MessageService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

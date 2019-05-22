@@ -1,0 +1,134 @@
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  opacity: 1;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border-radius: 50%;
+  border: 5px solid gold;
+  margin: 15px;
+  box-shadow: 2px 2px 4px #777777;
+  opacity: 1;
+  background-color: rgb(0, 0, 0, 0.85);
+  z-index: 1;
+}
+
+:host >>> .ui-card-body {
+  padding: 0;
+}
+:host >>> .card .ui-card {
+  padding: 25px;
+  height: 80vh;
+  position: absolute;
+  top: 10vh;
+  background: none;
+  border: 0px solid black;
+  z-index: 1;
+  box-shadow: none !important;
+}
+:host >>> .card .ui-card-header,
+:host >>> .msg-card .ui-card-header {
+  border-bottom: 1px solid #aaaaaa;
+  opacity: 1;
+}
+
+:host >>> .msg-card .ui-card {
+  padding: 25px;
+  height: 80vh;
+  position: absolute;
+  top: 10vh;
+  width: 95vw;
+}
+
+.title {
+  font-family: "Mario Party";
+
+  color: black;
+  text-shadow: 1px 2px 2px goldenrod;
+  font-size: 16px;
+  opacity: 1;
+}
+
+.subtitle {
+  text-shadow: 1px 2px 2px #cccccc;
+}
+
+.bg {
+  background-image: url("./../../assets/bob-omb.png");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  opacity: 0.2;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -10;
+  top: 0;
+}
+
+.float-right {
+  top: 25px;
+  right: 10px;
+  position: absolute;
+  background: transparent;
+  border: none;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.col-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+}
+
+:host >>> .ui-button {
+  background-color: #333333;
+  border: 1px solid #333333;
+  box-shadow: 1px 1px 2px #444444;
+  letter-spacing: 0.1em !important;
+  color: goldenrod;
+  text-shadow: 1px 2px 3px black;
+  font-weight: bold;
+}
+:host >>> .ui-button-secondary {
+  text-shadow: none;
+}
+
+:host >>> .ui-button:enabled:active,
+:host >>> .ui-button:enabled:hover {
+  background-color: darkgoldenrod;
+  border: 1px solid darkgoldenrod;
+}
+
+.spinner {
+  margin-left: 15px;
+}
+
+:host >>> .spinner .ui-spinner {
+  width: 125px;
+}
+
+:host >>> .spinner .ui-spinner input {
+  width: 100px;
+}

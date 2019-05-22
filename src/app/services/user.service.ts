@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AuthService } from "./auth.service";
 import { AngularFirestore } from "@angular/fire/firestore";
-import { Character } from "./character";
+import { Character } from "../character";
 
 @Injectable({
   providedIn: "root"
@@ -9,6 +9,7 @@ import { Character } from "./character";
 export class UserService {
   userName: string;
   character: Character;
+  tempCharacter: Character;
 
   docIdMap: Map<string, number>;
   shopMap: Map<string, string>;
@@ -29,11 +30,12 @@ export class UserService {
     this.shopMap.set("Star", "star");
   }
 
-  async getCharacterDetails() {
+  async getCharacterDetails(characterName?: string) {
     if (this.authService.isLoggedIn) {
       this.userName = this.authService.getUser().displayName;
+      var name = !characterName ? this.userName : characterName;
       var queryCollection = this.afs.collection("characters", ref =>
-        ref.where("name", "==", this.userName)
+        ref.where("name", "==", name)
       );
 
       await queryCollection
@@ -46,12 +48,17 @@ export class UserService {
           }
 
           snapshot.forEach(doc => {
-            console.log(doc.id, "=>", doc.data());
+            // console.log(doc.id, "=>", doc.data());
             var data = doc.data();
             data.id = doc.id;
+
+            if (characterName) {
+              var ret = new Character(doc.data());
+              this.tempCharacter = ret;
+              return ret;
+            }
+
             this.character = new Character(doc.data());
-            console.log(doc.data().coinsAcquired);
-            console.log(new Character(doc.data()));
           });
         });
     }
@@ -103,72 +110,119 @@ export class UserService {
     }
   }
 
-  async addHints(numHints: number) {
+  async addHints(numHints: number, characterName?: string) {
     console.log("Adding hints");
     if (this.authService.isLoggedIn) {
       if (this.userName == undefined) {
         this.userName = this.authService.getUser().displayName;
       }
 
-      this.getCharacterDetails().then(character => {
-        var hints = this.character.hintsAvailable + numHints;
-
-        var doc = this.afs
-          .collection("characters")
-          .doc(this.docIdMap.get(this.userName).toString());
-        doc.set(
-          {
-            hintsAvailable: hints
-          },
-          { merge: true }
-        );
-      });
+      var character;
+      if (characterName) {
+        await this.getCharacterDetails(characterName);
+        character = this.tempCharacter;
+      } else {
+        await this.getCharacterDetails();
+        character = this.character;
+      }
+      var hints = character.hintsAvailable + numHints;
+      var name = !characterName ? this.userName : characterName;
+      var doc = this.afs
+        .collection("characters")
+        .doc(this.docIdMap.get(name).toString());
+      doc.set(
+        {
+          hintsAvailable: hints
+        },
+        { merge: true }
+      );
     }
   }
 
-  async addCoins(numCoins: number, coinId: number) {
+  async subtractHints(numHints: number, characterName?: string) {
+    console.log("Subtracting hints");
+    if (this.authService.isLoggedIn) {
+      if (this.userName == undefined) {
+        this.userName = this.authService.getUser().displayName;
+      }
+      var character;
+      if (characterName) {
+        await this.getCharacterDetails(characterName);
+        character = this.tempCharacter;
+      } else {
+        await this.getCharacterDetails();
+        character = this.character;
+      }
+      var oldHints = character.hintsAvailable;
+
+      var name = !characterName ? this.userName : characterName;
+      this.afs
+        .collection("characters")
+        .doc(this.docIdMap.get(name).toString())
+        .update({
+          hintsAvailable: oldHints - numHints
+        });
+    }
+  }
+
+  async addCoins(numCoins: number, coinId: number, characterName?: string) {
     console.log("Adding coins");
     if (this.authService.isLoggedIn) {
       if (this.userName == undefined) {
         this.userName = this.authService.getUser().displayName;
       }
 
-      this.getCharacterDetails().then(character => {
-        var coins = this.character.numCoins + numCoins;
-        var oldAcquired = this.character.coinsAcquired;
+      var character;
+      if (characterName) {
+        await this.getCharacterDetails(characterName);
+        character = this.tempCharacter;
+      } else {
+        await this.getCharacterDetails();
+        character = this.character;
+      }
+      var name = !characterName ? this.userName : characterName;
+      var coins = character.numCoins + numCoins;
+      var oldAcquired = character.coinsAcquired;
 
-        if (!this.character.coinsAcquired.includes(coinId)) {
-          oldAcquired.push(coinId);
-          var doc = this.afs
-            .collection("characters")
-            .doc(this.docIdMap.get(this.userName).toString());
-          doc.set(
-            {
-              numCoins: coins
-            },
-            { merge: true }
-          );
-          doc.set({ coinsAcquired: oldAcquired }, { merge: true });
-        } else {
-          alert("You can't scan the same coin more than once!");
-        }
-      });
+      if (!character.coinsAcquired.includes(coinId)) {
+        oldAcquired.push(coinId);
+        var doc = this.afs
+          .collection("characters")
+          .doc(this.docIdMap.get(name).toString());
+        doc.set(
+          {
+            numCoins: coins
+          },
+          { merge: true }
+        );
+        doc.set({ coinsAcquired: oldAcquired }, { merge: true });
+      } else {
+        alert("You can't scan the same coin more than once!");
+      }
     }
   }
 
-  async subtractCoins(numCoins: number) {
+  async subtractCoins(numCoins: number, characterName?: string) {
     console.log("Subtracting coins");
     if (this.authService.isLoggedIn) {
       if (this.userName == undefined) {
         this.userName = this.authService.getUser().displayName;
       }
-      await this.getCharacterDetails();
-      var oldCoins = this.character.numCoins;
-      var oldSpent = this.character.coinsSpent;
 
+      var character;
+      if (characterName) {
+        await this.getCharacterDetails(characterName);
+        character = this.tempCharacter;
+      } else {
+        await this.getCharacterDetails();
+        character = this.character;
+      }
+      var oldCoins = character.numCoins;
+      var oldSpent = character.coinsSpent;
+      var name = !characterName ? this.userName : characterName;
       this.afs
         .collection("characters")
-        .doc(this.docIdMap.get(this.userName).toString())
+        .doc(this.docIdMap.get(name).toString())
         .update({
           numCoins: oldCoins - numCoins,
           coinsSpent: oldSpent + numCoins
@@ -226,33 +280,102 @@ export class UserService {
     }
   }
 
-  async addStar(starId: number) {
+  async addStar(starId: number, characterName?: string) {
     console.log("Adding a star");
     if (this.authService.isLoggedIn) {
       if (this.userName == undefined) {
         this.userName = this.authService.getUser().displayName;
       }
+      var name = !characterName ? this.userName : characterName;
+      var character;
+      if (characterName) {
+        await this.getCharacterDetails(characterName);
+        character = this.tempCharacter;
+      } else {
+        await this.getCharacterDetails();
+        character = this.character;
+      }
 
-      this.getCharacterDetails().then(character => {
-        var stars = this.character.numStars + 1;
-        var oldAcquired = this.character.starsAcquired;
+      var stars = character.numStars + 1;
+      var oldAcquired = character.starsAcquired;
+      if (!character.starsAcquired.includes(starId)) {
+        oldAcquired.push(starId);
+        var doc = this.afs
+          .collection("characters")
+          .doc(this.docIdMap.get(name).toString());
+        doc.set(
+          {
+            numStars: stars
+          },
+          { merge: true }
+        );
+        doc.set({ starsAcquired: oldAcquired }, { merge: true });
+      } else {
+        alert("You can't scan the same star more than once!");
+      }
+    }
+  }
 
-        if (!this.character.starsAcquired.includes(starId)) {
-          oldAcquired.push(starId);
-          var doc = this.afs
-            .collection("characters")
-            .doc(this.docIdMap.get(this.userName).toString());
-          doc.set(
-            {
-              numStars: stars
-            },
-            { merge: true }
-          );
-          doc.set({ starsAcquired: oldAcquired }, { merge: true });
-        } else {
-          alert("You can't scan the same star more than once!");
-        }
-      });
+  async addStars(numStars: number, starId: number, characterName?: string) {
+    console.log("Adding stars");
+    if (this.authService.isLoggedIn) {
+      if (this.userName == undefined) {
+        this.userName = this.authService.getUser().displayName;
+      }
+
+      var character;
+      if (characterName) {
+        await this.getCharacterDetails(characterName);
+        character = this.tempCharacter;
+      } else {
+        await this.getCharacterDetails();
+        character = this.character;
+      }
+      var name = !characterName ? this.userName : characterName;
+      var stars = character.numStars + numStars;
+      var oldAcquired = character.starsAcquired;
+
+      if (!character.starsAcquired.includes(starId)) {
+        oldAcquired.push(starId);
+        var doc = this.afs
+          .collection("characters")
+          .doc(this.docIdMap.get(name).toString());
+        doc.set(
+          {
+            numStars: stars
+          },
+          { merge: true }
+        );
+        doc.set({ starsAcquired: oldAcquired }, { merge: true });
+      } else {
+        alert("You can't scan the same star more than once!");
+      }
+    }
+  }
+
+  async subtractStars(numStars: number, characterName?: string) {
+    console.log("Subtracting stars");
+    if (this.authService.isLoggedIn) {
+      if (this.userName == undefined) {
+        this.userName = this.authService.getUser().displayName;
+      }
+
+      var character;
+      if (characterName) {
+        await this.getCharacterDetails(characterName);
+        character = this.tempCharacter;
+      } else {
+        await this.getCharacterDetails();
+        character = this.character;
+      }
+      var oldStars = character.numStars;
+      var name = !characterName ? this.userName : characterName;
+      this.afs
+        .collection("characters")
+        .doc(this.docIdMap.get(name).toString())
+        .update({
+          numStars: oldStars - numStars
+        });
     }
   }
 

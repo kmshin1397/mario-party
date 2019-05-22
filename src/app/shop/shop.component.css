@@ -6,6 +6,8 @@
   /* background-color: #007ad9; */
   color: black;
   text-shadow: 1px 2px 2px goldenrod;
+  height: 12vh;
+  margin-top: 0;
 }
 
 .container {
@@ -103,13 +105,10 @@
   position: absolute;
   top: 10vh;
 }
-:host >>> .msg-card .ui-card-body {
-  padding: 0;
-  height: 63vh;
-}
-
+:host >>> .msg-card .ui-card-body,
 :host >>> .card .ui-card-body {
   padding: 0;
+  height: 63vh;
 }
 
 :host >>> .card .ui-card-content {
@@ -130,6 +129,8 @@
 .balance {
   float: right;
   padding-right: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   padding-bottom: 25px;
   font-weight: 400;
   font-family: "Mario Party";
@@ -162,4 +163,7 @@
 :host >>> .ui-button:enabled:hover {
   background-color: darkgoldenrod;
   border: 1px solid darkgoldenrod;
+}
+:host >>> .card .ui-card-header {
+  border-bottom: 1px solid #cccccc;
 }

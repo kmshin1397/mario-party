@@ -7,7 +7,7 @@ import {
   EventEmitter
 } from "@angular/core";
 import { Character } from "src/app/character";
-import { UserService } from "src/app/user.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-rng-dice",

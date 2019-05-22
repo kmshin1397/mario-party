@@ -7,23 +7,23 @@ class CharacterLoginInfo {
 export const LoginInfo: CharacterLoginInfo[] = [
   {
     name: "Kamek",
-    email: "kamek@marioparty.edu",
-    password: "ditchday2019"
+    email: "kamek@marioparty.com",
+    password: "kamekpigeon"
   },
   {
     name: "Dry Bones",
-    email: "drybones@marioparty.edu",
-    password: "ditchday2019"
+    email: "drybones@marioparty.com",
+    password: "drytibia"
   },
   {
     name: "Piranha Plant",
-    email: "piranha@marioparty.edu",
-    password: "ditchday2019"
+    email: "piranha@marioparty.com",
+    password: "piranhacactus"
   },
   {
     name: "Shy Guy",
-    email: "shyboi@marioparty.edu",
-    password: "ditchday2019"
+    email: "shyguy@marioparty.edu",
+    password: "shyboi"
   },
   {
     name: "Bob-omb",
