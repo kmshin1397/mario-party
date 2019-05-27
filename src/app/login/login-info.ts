@@ -29,5 +29,10 @@ export const LoginInfo: CharacterLoginInfo[] = [
     name: "Bob-omb",
     email: "bobomb@marioparty.edu",
     password: "ditchday2019"
+  },
+  {
+    name: "Lakitu",
+    email: "lakitu@marioparty.edu",
+    password: "cloudy"
   }
 ];

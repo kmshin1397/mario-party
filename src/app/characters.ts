@@ -90,5 +90,23 @@ export const Characters: Character[] = [
     coinsSpent: 0,
     starsAcquired: [],
     hintsAvailable: 0
+  },
+  {
+    id: 6,
+    name: "Lakitu",
+    members: [],
+    currentLoc: "",
+    currentLocIndex: 0,
+    numStars: 0,
+    numCoins: 0,
+    defaultPicture: "lakitu.png",
+    color: "lemonchiffon",
+    canMove: false,
+    turnIndex: 0,
+    diceRolls: [],
+    coinsAcquired: [],
+    coinsSpent: 0,
+    starsAcquired: [],
+    hintsAvailable: 0
   }
 ];

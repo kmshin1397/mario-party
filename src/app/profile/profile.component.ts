@@ -60,6 +60,7 @@ export class ProfileComponent implements OnInit, OnChanges {
     });
 
     this.refresh();
+    // this.authService.updateUser();
   }
 
   ngOnChanges() {

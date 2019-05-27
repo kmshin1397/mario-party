@@ -103,6 +103,9 @@ export class QrComponent implements OnInit {
         });
 
         this.showCoin = true;
+      } else if (code === "moore puzzle") {
+        this.puzzleMsg = "2nd patio";
+        this.showPuzzle = true;
       } else {
         this.puzzleMsg = code;
         this.showPuzzle = true;

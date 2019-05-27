@@ -400,7 +400,7 @@ export class UserService {
           }
           snapshot.forEach(doc => {
             var data = doc.data();
-            if (data.name != "Bob-omb") {
+            if (data.name != "Bob-omb" && data.name != "Lakitu") {
               returnList.push({
                 name: data.name,
                 numStars: data.numStars,
