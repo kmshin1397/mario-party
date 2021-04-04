@@ -7,7 +7,7 @@ import { UserService } from "src/app/services/user.service";
 @Component({
   selector: "app-game",
   templateUrl: "./game.component.html",
-  styleUrls: ["./game.component.css"]
+  styleUrls: ["./game.component.css"],
 })
 export class GameComponent implements OnInit {
   items: MenuItem[];
@@ -30,28 +30,28 @@ export class GameComponent implements OnInit {
       {
         label: "Rules",
         icon: "fas fa-gavel",
-        routerLink: "/rules"
+        routerLink: "/rules",
       },
       { label: "Shop", icon: "fas fa-shopping-cart", routerLink: "/shop" },
       {
         label: "Profile",
         icon: "fas fa-user-alt",
-        routerLink: "/profile"
+        routerLink: "/profile",
       },
       {
         label: "Scoreboard",
         icon: "fas fa-list-ol",
-        routerLink: "/scoreboard"
+        routerLink: "/scoreboard",
       },
       {
         label: "QR Reader",
         icon: "fas fa-qrcode",
-        routerLink: "/qr"
+        routerLink: "/qr",
       },
       {
         label: "Logout",
-        icon: "fas fa-sign-out-alt"
-      }
+        icon: "fas fa-sign-out-alt",
+      },
     ];
 
     this.user = await this.userService.getCharacterDetails();
@@ -68,12 +68,13 @@ export class GameComponent implements OnInit {
     this.dice = false;
 
     // Disable dice after moving until next puzzle is completed
-    this.userService.updateCanMove(false);
+    // COMMENTED OUT FOR DEMO PURPOSES
+    // this.userService.updateCanMove(false);
     this.canMove = false;
   }
 
   delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   async moveCharacter(numSpaces: number) {
